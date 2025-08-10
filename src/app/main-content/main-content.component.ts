@@ -6,6 +6,6 @@ import { MenuBarComponent } from '../shared/nav/menu-bar/menu-bar.component';
   standalone: true,
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.scss'],
-  imports: [MenuBarComponent] // 👈 jetzt bekannt
+  imports: [MenuBarComponent] // (hier später deine Sektionen rein)
 })
 export class MainContentComponent {}
