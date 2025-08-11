@@ -1,79 +1,202 @@
-.hero{
+/* Section-Grundlage */
+.hero {
   position: relative;
-  padding: var(--s-10) 1rem;
-  min-height: clamp(520px, 78vh, 860px);
-  overflow: hidden;
+  padding: 0;
+  min-height: unset;
+  background: transparent;
+}
+
+/* Container für die Hero-Section */
+.hero-container {
+  position: relative;
+  width: 1214px;
+  height: 705px;
+  margin-top: 41px;
+  margin-left: 114px;
+  margin-right: auto;
+  background: transparent;
+  // Optional: zentrieren bei großen Bildschirmen
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+/* 2 Spalten: links Bild/Kreis, rechts Text */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
 }
 
 /* Logo oben rechts */
-.hero-logo{
-  position:absolute; right: clamp(1rem,4vw,2rem); top: clamp(1rem,3vw,1.5rem);
-  height: 34px; opacity:.95;
+.hero-logo-block {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
 }
 
-/* Seitenicons vertikal */
-.side-icons{
-  position:absolute; right: clamp(1rem,4vw,2rem); top: 35%;
-  display:flex; flex-direction:column; gap:.9rem; list-style:none; margin:0; padding:0;
-}
-.side-icons a{
-  display:grid; place-items:center; width:36px; height:36px;
-  border:1px solid var(--primary); border-radius:999px; text-decoration:none;
-  background: color-mix(in oklab, var(--bg) 75%, transparent);
-}
-.side-icons img{ width:18px; height:18px; opacity:.95; }
-
-/* Hauptlayout: zwei Spalten */
-.grid{
-  display:grid; gap: var(--s-6);
-  grid-template-columns: 1.05fr 1fr;
-  align-items:center;
-  max-width: 1200px; margin: 0 auto;
+.hero-logo {
+  height: 40px;
+  opacity: 0.95;
+  color: var(--primary);
+  display: block;
 }
 
-/* Visuelles: Ellipse + Foto */
-.visual{ position:relative; justify-self:start; }
-.ellipse{
-  position:absolute; inset:auto; left:-6%; top:5%;
-  width: min(520px, 48vw); height: min(520px, 48vw);
-  border-radius: 50%;
+.hero-logo-name {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 0.2rem;
+  letter-spacing: 0.04em;
+  font-family: var(--font, sans-serif);
+}
+
+.hero-logo-dev {
+  margin-top: 0.1rem;
+  width: 54px;
+  height: auto;
+  display: block;
+}
+
+/* Side icons rechts */
+.side-icons {
+  position: absolute;
+  right: clamp(1rem, 4vw, 2rem);
+  top: 28%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.side-icons a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  color: var(--primary);
+}
+
+.icon path {
+  stroke: currentColor;
+  fill: none;
+}
+.side-icons img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Bild + blaue Ellipse */
+.visual {
+  position: relative;
+  width: 594px;
+  height: 710px;
+  justify-self: center;
+}
+
+.bg-shape {
+  position: absolute;
+  width: 594px;
+  height: 710px;
+  top: -85px;
+  left: -202px;
+  z-index: 1;
+  transform: rotate(45deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 👉 der „Kreis“: vorher war’s ein Rechteck */
+.ellipse {
+  position: relative;
+  width: min(580px, 48vw);
+  height: min(616px, 48vw);
   background: var(--primary);
-  filter: none; /* in deinem Shot ohne Blur */
-}
-.portrait{
-  position:relative; z-index:1;
-  display:block;
-  height: auto; width: min(460px, 42vw);
+  transform: rotate(45deg);
 }
 
-/* Textseite */
-.copy{ text-align:left; }
-.copy h1{
-  font-size: var(--h1);
-  margin: 0 0 .35em 0;
-  letter-spacing: .02em;
-}
-.role{
-  font-size: var(--h2);
-  letter-spacing: .18em;
-  margin: 0; opacity:.95;
+/* Portrait darüber legen */
+.portrait {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  width: 535px;
+  height: 683px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+  transform: rotate(12deg) translateX(-40px);
+  margin-top: -46px;
 }
 
-/* Pfeil nach unten */
-.scroll-down{
-  position:absolute; left:50%; bottom: clamp(1.25rem, 4vh, 2rem);
+.copy {
+  position: relative;
+  z-index: 3;
+  margin-left: 40px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.copy h1 {
+  font-size: clamp(2.2rem, 5vw, 5.2rem);
+  margin: 0 0 0.35em;
+  letter-spacing: 0.02em;
+}
+.role {
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  letter-spacing: 0.18em;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* Pfeil unten */
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.2rem, 4vh, 2rem);
   transform: translateX(-50%);
-  display:grid; place-items:center;
-  width:40px; height:40px; border:1px solid var(--primary); border-radius:999px;
-  background: color-mix(in oklab, var(--bg) 75%, transparent);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  // background: color-mix(in oklab, var(--bg) 80%, transparent);
 }
 
-/* Responsiv: untereinander */
-@media (max-width: 920px){
-  .grid{ grid-template-columns: 1fr; text-align:center; }
-  .visual{ order:-1; justify-self:center; }
-  .copy{ text-align:center; }
-  .hero-logo, .side-icons{ display:none; }
-  .ellipse{ left:50%; transform: translateX(-50%); top:4%; width:min(440px, 70vw); height:min(440px, 70vw); }
-  .portrait{ width: min(360px, 70vw); }
+/* Responsiv */
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .visual {
+    order: -1;
+  }
+  .portrait {
+    position: static;
+    width: min(360px, 74vw);
+    margin-top: -12vw;
+  }
+  .ellipse {
+    width: min(420px, 74vw);
+    height: min(420px, 74vw);
+    margin: 0 auto;
+  }
+  .hero-logo,
+  .side-icons {
+    display: none;
+  }
+  .copy {
+    text-align: center;
+  }
 }

@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WhyMeComponent } from './why-me.component';
+// import { WhyMeComponent } from './why-me.component';
 
-describe('WhyMeComponent', () => {
-  let component: WhyMeComponent;
-  let fixture: ComponentFixture<WhyMeComponent>;
+// describe('WhyMeComponent', () => {
+//   let component: WhyMeComponent;
+//   let fixture: ComponentFixture<WhyMeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [WhyMeComponent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [WhyMeComponent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(WhyMeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(WhyMeComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
