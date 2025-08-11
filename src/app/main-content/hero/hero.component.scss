@@ -1,0 +1,79 @@
+.hero{
+  position: relative;
+  padding: var(--s-10) 1rem;
+  min-height: clamp(520px, 78vh, 860px);
+  overflow: hidden;
+}
+
+/* Logo oben rechts */
+.hero-logo{
+  position:absolute; right: clamp(1rem,4vw,2rem); top: clamp(1rem,3vw,1.5rem);
+  height: 34px; opacity:.95;
+}
+
+/* Seitenicons vertikal */
+.side-icons{
+  position:absolute; right: clamp(1rem,4vw,2rem); top: 35%;
+  display:flex; flex-direction:column; gap:.9rem; list-style:none; margin:0; padding:0;
+}
+.side-icons a{
+  display:grid; place-items:center; width:36px; height:36px;
+  border:1px solid var(--primary); border-radius:999px; text-decoration:none;
+  background: color-mix(in oklab, var(--bg) 75%, transparent);
+}
+.side-icons img{ width:18px; height:18px; opacity:.95; }
+
+/* Hauptlayout: zwei Spalten */
+.grid{
+  display:grid; gap: var(--s-6);
+  grid-template-columns: 1.05fr 1fr;
+  align-items:center;
+  max-width: 1200px; margin: 0 auto;
+}
+
+/* Visuelles: Ellipse + Foto */
+.visual{ position:relative; justify-self:start; }
+.ellipse{
+  position:absolute; inset:auto; left:-6%; top:5%;
+  width: min(520px, 48vw); height: min(520px, 48vw);
+  border-radius: 50%;
+  background: var(--primary);
+  filter: none; /* in deinem Shot ohne Blur */
+}
+.portrait{
+  position:relative; z-index:1;
+  display:block;
+  height: auto; width: min(460px, 42vw);
+}
+
+/* Textseite */
+.copy{ text-align:left; }
+.copy h1{
+  font-size: var(--h1);
+  margin: 0 0 .35em 0;
+  letter-spacing: .02em;
+}
+.role{
+  font-size: var(--h2);
+  letter-spacing: .18em;
+  margin: 0; opacity:.95;
+}
+
+/* Pfeil nach unten */
+.scroll-down{
+  position:absolute; left:50%; bottom: clamp(1.25rem, 4vh, 2rem);
+  transform: translateX(-50%);
+  display:grid; place-items:center;
+  width:40px; height:40px; border:1px solid var(--primary); border-radius:999px;
+  background: color-mix(in oklab, var(--bg) 75%, transparent);
+}
+
+/* Responsiv: untereinander */
+@media (max-width: 920px){
+  .grid{ grid-template-columns: 1fr; text-align:center; }
+  .visual{ order:-1; justify-self:center; }
+  .copy{ text-align:center; }
+  .hero-logo, .side-icons{ display:none; }
+  .ellipse{ left:50%; transform: translateX(-50%); top:4%; width:min(440px, 70vw); height:min(440px, 70vw); }
+  .portrait{ width: min(360px, 70vw); }
+}
