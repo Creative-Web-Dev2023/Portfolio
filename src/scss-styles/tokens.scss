@@ -1,0 +1,13 @@
+/* ===== Simple Design Tokens ===== */
+:root {
+  /* Grundfarben (nur diese 5 ändern reicht fast immer) */
+  --bg: #0f1a20; /* Seitenhintergrund */
+  --surface: #15232b; /* Panels/Karten/Sections */
+  --text: #e8f1f5; /* Haupttext */
+  --muted: #9fb0bd; /* sekundärer Text/Lines */
+  --primary:#58e0b8; /* Akzent (Ellipse, Buttons, Hover) */
+
+
+  --radius: 18px;
+  --space: clamp(20px, 4vw, 48px); /* Section-Padding */
+}

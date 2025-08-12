@@ -1,202 +1,164 @@
-/* Section-Grundlage */
-.hero {
+@use "tokens" as t;
+@use "sass:math";
+
+/* px→rem Helfer (1 Arg) – konfliktfrei zu t.* */
+@function r($px) { @return ($px / 16) * 1rem; }
+
+/* ---------- Spacing-Dials (hier drehst du die „Luft“ hoch/runter) ---------- */
+$container-w: 1214px; // max Content-Breite wie im Mockup
+$pad-y: r(112); // oben/unten Innenabstand der Hero-Section
+$pad-x: r(64); // links/rechts Innenabstand
+$col-gap: r(72); // Abstand zwischen Bild-Spalte & Text-Spalte
+$left-col: r(520); // Breite der linken Spalte (Bild)
+/* WICHTIG: kleinerer Wert = näher am rechten Rand */
+$icons-right: r(24); // Abstand der Side-Icons vom rechten Rand (vorher r(72))
+$scroll-bottom: r(48); // Abstand des Pfeils vom unteren Rand
+
+/* ---------- Layout der Section ---------- */
+.hero {               /* hero section */
   position: relative;
-  padding: 0;
-  min-height: unset;
-  background: transparent;
+  background: var(--bg, #262E34);
+  color: var(--text, #F8F5EC);
+  min-height: 86vh;
 }
 
-/* Container für die Hero-Section */
 .hero-container {
   position: relative;
-  width: 1214px;
-  height: 705px;
-  margin-top: 41px;
-  margin-left: 114px;
-  margin-right: auto;
-  background: transparent;
-  // Optional: zentrieren bei großen Bildschirmen
-  // margin-left: auto;
-  // margin-right: auto;
+  max-width: 1214px;                 /* wie im Mockup */
+  margin-inline: auto;
+  padding: r(112) r(64);             /* oben/unten – links/rechts */
 }
 
-/* 2 Spalten: links Bild/Kreis, rechts Text */
+/* Zwei Spalten: links Visual, rechts Copy */
 .grid {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: r(520) 1fr; /* links Bild | rechts Text */
   align-items: center;
+  column-gap: r(72);                 /* „Luft“ zwischen den Spalten */
 }
 
-/* Logo oben rechts */
-.hero-logo-block {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-}
-
-.hero-logo {
-  height: 40px;
-  opacity: 0.95;
-  color: var(--primary);
-  display: block;
-}
-
-.hero-logo-name {
-  font-size: 1.1rem;
-  color: var(--primary);
-  font-weight: 600;
-  margin-top: 0.2rem;
-  letter-spacing: 0.04em;
-  font-family: var(--font, sans-serif);
-}
-
-.hero-logo-dev {
-  margin-top: 0.1rem;
-  width: 54px;
-  height: auto;
-  display: block;
-}
-
-/* Side icons rechts */
-.side-icons {
-  position: absolute;
-  right: clamp(1rem, 4vw, 2rem);
-  top: 28%;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.side-icons a {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--primary);
-  border-radius: 999px;
-  color: var(--primary);
-}
-
-.icon path {
-  stroke: currentColor;
-  fill: none;
-}
-.side-icons img {
-  width: 18px;
-  height: 18px;
-}
-
-/* Bild + blaue Ellipse */
-.visual {
+/* -------------------- Visual: Shape + Portrait -------------------- */
+.visual {                             /* BG shape + subject 3 */
   position: relative;
-  width: 594px;
-  height: 710px;
-  justify-self: center;
+  isolation: isolate;                 /* saubere z-index-Schichten */
+  min-height: r(620);
 }
 
-.bg-shape {
+/* BG shape (deine SVG/PNG) – liegt HINTER dem Portrait */
+.visual .bg-shape {                   /* BG shape */
   position: absolute;
-  width: 594px;
-  height: 710px;
-  top: -85px;
-  left: -202px;
-  z-index: 1;
-  transform: rotate(45deg);
+  z-index: 0;
+  width: r(520);                      /* Größe der Ellipse */
+  height: auto;
+  left: r(-90);                       /* nach links schieben (wie im Mockup) */
+  top: r(-20);                        /* leicht nach oben */
   pointer-events: none;
   user-select: none;
 }
 
-/* 👉 der „Kreis“: vorher war’s ein Rechteck */
-.ellipse {
+/* Portrait (PNG mit freigestellter Person) – liegt VOR der Shape */
+.portrait {                           /* subject 3 */
   position: relative;
-  width: min(580px, 48vw);
-  height: min(616px, 48vw);
-  background: var(--primary);
-  transform: rotate(45deg);
+  z-index: 1;
+  width: r(440);                      /* Portraitbreite */
+  height: auto;
+  display: block;
+  margin-left: r(20);                 /* minimal nach rechts – Feinjustage */
 }
 
-/* Portrait darüber legen */
-.portrait {
-  position: absolute;
-  top: 22px;
-  left: 25px;
-  width: 535px;
-  height: 683px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2;
-  transform: rotate(12deg) translateX(-40px);
-  margin-top: -46px;
-}
-
-.copy {
-  position: relative;
-  z-index: 3;
-  margin-left: 40px;
-  margin-top: 60px;
+/* --------------------------- Textblock rechts --------------------------- */
+.copy {                               /* copy */
+  max-width: none;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: r(28);
 }
 
-.copy h1 {
-  font-size: clamp(2.2rem, 5vw, 5.2rem);
-  margin: 0 0 0.35em;
-  letter-spacing: 0.02em;
-}
-.role {
-  font-size: clamp(1.1rem, 2.5vw, 2rem);
-  letter-spacing: 0.18em;
+.copy h1 {                            /* Name */
   margin: 0;
-  opacity: 0.95;
+  font-family: "Anta", system-ui, sans-serif;
+  font-size: clamp(r(56), 7vw, r(88));
+  line-height: 1.08;
+  font-weight: 400;
+  color: var(--text, #F8F5EC);
 }
 
-/* Pfeil unten */
-.scroll-down {
+.copy .role {                         /* FRONTEND DEVELOPER */
+  margin: 0;
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-size: r(32);
+  letter-spacing: 0.22em;
+  color: var(--text, #F8F5EC);
+  opacity: .95;
+}
+
+/* ------------------------------ Logo oben rechts -------------------------- */
+.hero-logo-block {                    /* hero-logo-block */
+  position: absolute;
+  top: r(32);
+  right: r(40);
+  color: var(--primary, #89BCD9);
+}
+
+/* ------------------------- Vertikale Icon-Leiste rechts ------------------- */
+.side-icons {                         /* side-icons */
+  position: absolute;
+  /* steht „außerhalb“ der Content-Breite weiter rechts wie im Referenzbild */
+  right: max(r(16), calc((100vw - 1214px) / 2 - r(20)));
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: r(14);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    width: r(40);
+    height: r(40);
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    border: 1.5px solid color-mix(in oklab, var(--primary, #89BCD9) 85%, #fff 0%);
+    color: var(--primary, #89BCD9);   /* SVGs nutzen currentColor */
+    transition: transform .15s ease;
+  }
+  a:hover { transform: translateY(-1px) scale(1.03); }
+}
+
+/* --------------------------- Scroll-Pfeil unten --------------------------- */
+.scroll-down {                        /* a.scroll-down */
   position: absolute;
   left: 50%;
-  bottom: clamp(1.2rem, 4vh, 2rem);
+  bottom: r(48);
   transform: translateX(-50%);
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  // background: color-mix(in oklab, var(--bg) 80%, transparent);
+  display: inline-block;
+  opacity: .95;
 }
 
-/* Responsiv */
-@media (max-width: 980px) {
+/* ------------------------------- Responsive ------------------------------- */
+@media (max-width: 1100px) {
   .grid {
     grid-template-columns: 1fr;
+    row-gap: r(32);
     text-align: center;
   }
   .visual {
-    order: -1;
+    min-height: auto;
+  }
+  .visual .bg-shape {
+    left: 50%;
+    top: r(-20);
+    transform: translateX(-50%);      /* Shape mittig hinter dem Portrait */
+    width: r(420);
   }
   .portrait {
-    position: static;
-    width: min(360px, 74vw);
-    margin-top: -12vw;
+    width: r(360);
+    margin-left: 0;
+    margin-inline: auto;
   }
-  .ellipse {
-    width: min(420px, 74vw);
-    height: min(420px, 74vw);
-    margin: 0 auto;
-  }
-  .hero-logo,
-  .side-icons {
-    display: none;
-  }
-  .copy {
-    text-align: center;
-  }
+  .copy { margin-inline: auto; }
+   .copy .name { white-space: normal; }
+  .side-icons { right: r(16); }
 }
