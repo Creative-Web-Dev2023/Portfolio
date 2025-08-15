@@ -12,34 +12,30 @@ html, body {
   scroll-behavior: smooth;
 }
 
+@use "tokens";
+@use "fonts";
+
+/* -------- Reset (kurz) -------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html, body { height: 100%; }
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
   background: var(--bg);
   color: var(--text);
-  font-family: "Josefin Sans", system-ui, sans-serif;
-  font-weight: 400;
+  font: 400 16px/1.5 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Optional: Font-Stacks als Variablen, falls du sie nutzen willst */
-:root {
-  --font-display: "Anta", "Josefin Sans", system-ui, sans-serif;
-  --font-sans: "Josefin Sans", system-ui, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-/* Basis-Typografie */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.1;
-}
-code, kbd, pre, samp {
-  font-family: var(--font-mono);
-}
-
-/* Medien, Formulare, Links (einmalig global) */
 img, picture, video, canvas, svg { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; }
 a { color: inherit; text-decoration: none; }
-.hide-on-mobile { display: none !important; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; font-weight: 600; }
+code, kbd, pre, samp { font-family: var(--font-mono); }
+
+/* -------- Utilities -------- */
+.container { max-width: var(--container); margin-inline: auto; padding-inline: 16px; }
+.hide-on-mobile { display: none !important; }  /* du blendest selbst per MQ ein */

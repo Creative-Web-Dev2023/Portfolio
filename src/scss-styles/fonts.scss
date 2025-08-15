@@ -38,3 +38,9 @@
   font-style: normal;
   font-display: swap;
 }
+
+:root {
+  --font-display: "Anta", "Josefin Sans", system-ui, sans-serif;
+  --font-sans: "Josefin Sans", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
