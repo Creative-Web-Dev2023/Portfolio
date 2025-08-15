@@ -1,64 +1,6 @@
-@use "./scss-styles/tokens";
-
-@font-face {
-  font-family: "Anta";
-  src: url("/fonts/Anta-Regular.ttf") format(".ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("/fonts/JosefinSans-VariableFont_wght.ttf") format(".ttf");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Roboto Mono";
-  src: url("/fonts/RobotoMono-VariableFont_wght.ttf") format(".ttf");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* globale Stacks (optional) */
-:root{
-  --font-display: "Anta", "Josefin Sans", system-ui, sans-serif;
-  --font-sans: "Josefin Sans", system-ui, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, monospace;
-}
-html, body { font-family: var(--font-sans); }
+/* Globalen Style-Einstieg*/
+@use "tokens";
+@use "fonts";
+@use "global";
 
 
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Anta", "Josefin Sans", "Roboto Mono", Arial, sans-serif;
-}
-.container {
-  max-width: 1214px;
-  margin-inline: auto;
-  padding-inline: clamp(16px, 4vw, 64px);
-}
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: var(--space) 16px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid var(--primary);
-  color: var(--text);
-  background: transparent;
-}
-.btn:hover {
-  background: color-mix(in oklab, var(--primary) 22%, transparent);
-}

@@ -1,0 +1,47 @@
+.why {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  color: var(--text);
+}
+
+.why__item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: .75rem;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  max-width: 340px;
+}
+
+.why__icon {
+  width: 32px; height: 40px;
+  background: var(--primary);
+  border-radius: 6px; /* Platzhalter für dein SVG */
+}
+
+.why__heading {
+  font-weight: 700;
+  font-size: 1.125rem; /* ~18px */
+  color: var(--primary);
+  text-align: left;
+}
+
+.why__text {
+  max-width: 34ch;
+  margin-inline: auto;
+  font-size: 1rem;
+  opacity: .95;
+}
+
+.why__scroll {
+  display: grid; place-items: center;
+  width: 38px; height: 89px; margin: .5rem auto 0;
+  border-radius: 30px; border: 1px solid var(--primary);
+}
+.why__scroll-arrow {
+  width: 22px; height: 50px;
+  background: var(--primary); /* ersetzbar mit SVG */
+
+}

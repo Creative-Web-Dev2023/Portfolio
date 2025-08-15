@@ -8,6 +8,9 @@
   --primary:#58e0b8; /* Akzent (Ellipse, Buttons, Hover) */
 
 
+  --hero-gutter: clamp(16px, 4vw, 32px); // Abstand zwischen Inhalt und Container
+  --hero-topbar-y: clamp(12px, 3vw, 24px); // Abstand zwischen Inhalt und oberem Rand
+
   --radius: 18px;
   --space: clamp(20px, 4vw, 48px); /* Section-Padding */
 }

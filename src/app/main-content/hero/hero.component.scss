@@ -2,11 +2,13 @@
 @use "sass:math";
 
 /* px→rem Helfer (1 Arg) – konfliktfrei zu t.* */
-@function r($px) { @return ($px / 16) * 1rem; }
+@function r($px) {
+  @return ($px / 16) * 1rem;
+}
 
 /* ---------- Spacing-Dials (hier drehst du die „Luft“ hoch/runter) ---------- */
 $container-w: 1214px; // max Content-Breite wie im Mockup
-$pad-y: r(112); // oben/unten Innenabstand der Hero-Section
+$pad-y: r(110); // oben/unten Innenabstand der Hero-Section
 $pad-x: r(64); // links/rechts Innenabstand
 $col-gap: r(72); // Abstand zwischen Bild-Spalte & Text-Spalte
 $left-col: r(520); // Breite der linken Spalte (Bild)
@@ -15,95 +17,151 @@ $icons-right: r(24); // Abstand der Side-Icons vom rechten Rand (vorher r(72))
 $scroll-bottom: r(48); // Abstand des Pfeils vom unteren Rand
 
 /* ---------- Layout der Section ---------- */
-.hero {               /* hero section */
+.hero {
+  /* hero section */
   position: relative;
-  background: var(--bg, #262E34);
-  color: var(--text, #F8F5EC);
+  background: var(--bg, #262e34);
+  color: var(--text, #f8f5ec);
   min-height: 86vh;
 }
 
 .hero-container {
   position: relative;
-  max-width: 1214px;                 /* wie im Mockup */
+  max-width: 1214px; /* wie im Mockup */
   margin-inline: auto;
-  padding: r(112) r(64);             /* oben/unten – links/rechts */
+  padding: r(112) r(64); /* oben/unten – links/rechts */
 }
 
-/* Zwei Spalten: links Visual, rechts Copy */
+/* Zwei Spalten: links hero_visual, rechts Copy */
 .grid {
   display: grid;
   grid-template-columns: r(520) 1fr; /* links Bild | rechts Text */
   align-items: center;
-  column-gap: r(72);                 /* „Luft“ zwischen den Spalten */
+  column-gap: r(72); /* „Luft“ zwischen den Spalten */
 }
 
-/* -------------------- Visual: Shape + Portrait -------------------- */
-.visual {                             /* BG shape + subject 3 */
+/* -------------------- hero_visual: Shape + hero_photo -------------------- */
+.hero_visual {
+  /* BG shape + subject 3 */
   position: relative;
-  isolation: isolate;                 /* saubere z-index-Schichten */
+  isolation: isolate; /* saubere z-index-Schichten */
   min-height: r(620);
 }
 
-/* BG shape (deine SVG/PNG) – liegt HINTER dem Portrait */
-.visual .bg-shape {                   /* BG shape */
+/* BG shape (deine SVG/PNG) – liegt HINTER dem hero_photo */
+.hero_visual .hero_shape {
+  /* BG shape */
   position: absolute;
   z-index: 0;
-  width: r(520);                      /* Größe der Ellipse */
+  width: r(520); /* Größe der Ellipse */
   height: auto;
-  left: r(-90);                       /* nach links schieben (wie im Mockup) */
-  top: r(-20);                        /* leicht nach oben */
+  left: r(-90); /* nach links schieben (wie im Mockup) */
+  top: r(-20); /* leicht nach oben */
   pointer-events: none;
   user-select: none;
 }
 
-/* Portrait (PNG mit freigestellter Person) – liegt VOR der Shape */
-.portrait {                           /* subject 3 */
+/* hero_photo (PNG mit freigestellter Person) – liegt VOR der Shape */
+.hero_photo {
+  /* subject 3 */
   position: relative;
   z-index: 1;
-  width: r(440);                      /* Portraitbreite */
+  width: r(440); /* hero_photobreite */
   height: auto;
   display: block;
-  margin-left: r(20);                 /* minimal nach rechts – Feinjustage */
+  margin-left: r(20); /* minimal nach rechts – Feinjustage */
 }
 
 /* --------------------------- Textblock rechts --------------------------- */
-.copy {                               /* copy */
+.copy {
+  /* copy */
   max-width: none;
   display: flex;
   flex-direction: column;
   gap: r(28);
 }
 
-.copy h1 {                            /* Name */
+.copy h1 {
+  /* Name */
   margin: 0;
   font-family: "Anta", system-ui, sans-serif;
   font-size: clamp(r(56), 7vw, r(88));
   line-height: 1.08;
   font-weight: 400;
-  color: var(--text, #F8F5EC);
+  color: var(--text, #f8f5ec);
 }
 
-.copy .role {                         /* FRONTEND DEVELOPER */
+.copy .role {
+  /* FRONTEND DEVELOPER */
   margin: 0;
   font-family: "Josefin Sans", system-ui, sans-serif;
   font-size: r(32);
   letter-spacing: 0.22em;
-  color: var(--text, #F8F5EC);
-  opacity: .95;
+  color: var(--text, #f8f5ec);
+  opacity: 0.95;
 }
 
 /* ------------------------------ Logo oben rechts -------------------------- */
-.hero-logo-block {                    /* hero-logo-block */
+.hero-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+  color: var(--primary); /* currentColor für das SVG (S = grün) */
+}
+
+/* Stapel für S + Klammern */
+.logo-stack {
+  position: relative;
+  width: 58px;
+  height: 38px;
+}
+
+/* S füllt den Stapel */
+.logo-s {
   position: absolute;
-  top: r(32);
-  right: r(40);
-  color: var(--primary, #89BCD9);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Klammern oben drauf platzieren und weiß färben */
+.brace-left,
+.brace-right {
+  position: absolute;
+  top: 7px;
+  width: 9px;
+  height: auto;
+  filter: brightness(0) invert(1); /* schwarz → weiß */
+  pointer-events: none; /*bedeutet, dass die Klammern nicht anklickbar sind */
+}
+.brace-left {
+  left: 9px;
+}
+.brace-right {
+  right: 12px;
+}
+
+/* Typo darunter */
+.hero-logo-name {
+  color: var(--text);
+  font-family: var(--font-display);
+}
+.hero-logo-dev {
+  color: inherit;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  line-height: 1.1;
 }
 
 /* ------------------------- Vertikale Icon-Leiste rechts ------------------- */
-.side-icons {                         /* side-icons */
+.side-icons {
+  /* side-icons */
   position: absolute;
-  /* steht „außerhalb“ der Content-Breite weiter rechts wie im Referenzbild */
+  color: var(--primary, #58e0b8);
   right: max(r(16), calc((100vw - 1214px) / 2 - r(20)));
   top: 50%;
   transform: translateY(-50%);
@@ -120,45 +178,291 @@ $scroll-bottom: r(48); // Abstand des Pfeils vom unteren Rand
     display: grid;
     place-items: center;
     border-radius: 999px;
-    border: 1.5px solid color-mix(in oklab, var(--primary, #89BCD9) 85%, #fff 0%);
-    color: var(--primary, #89BCD9);   /* SVGs nutzen currentColor */
-    transition: transform .15s ease;
+    border: 1.5px solid
+      color-mix(in oklab, var(--primary, #58e0b8) 85%, #fff 0%);
+    color: var(--primary, #58e0b8);
+    transition: transform 0.15s ease;
   }
-  a:hover { transform: translateY(-1px) scale(1.03); }
+  a:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
 }
 
 /* --------------------------- Scroll-Pfeil unten --------------------------- */
-.scroll-down {                        /* a.scroll-down */
+.scroll-down {
+  /* a.scroll-down */
   position: absolute;
   left: 50%;
   bottom: r(48);
   transform: translateX(-50%);
   display: inline-block;
-  opacity: .95;
+  opacity: 0.95;
+}
+.burger {
+  display: none;
+}
+/* Container für Shape + Foto übereinander */
+.hero__visual {
+  display: grid;
+  place-items: center; /* zentriert beide Ebenen */
+  margin: calc(var(--space) * 0.5) auto var(--space);
+  width: min(90vw, 520px); /* begrenzt die Gesamtbreite */
 }
 
+/* Beide Bilder liegen in derselben Grid-Zelle */
+.hero__shape,
+.hero__photo {
+  grid-area: 1 / 1;
+}
+
+/* Shape: etwas größer, damit rund/oval gut wirkt */
+.hero__shape {
+  width: 100%;
+  height: auto;
+}
+
+/* Porträt: etwas kleiner und leicht nach unten versetzt,
+   damit es wie im Mock auf der Shape "sitzt" */
+.hero__photo {
+  width: min(70vw, 360px);
+  height: auto;
+  z-index: 1; /* über der Shape */
+  transform: translateY(6%); /* feintunen: 4–12% je nach Bild */
+}
+
+/* Mobile Typo und Abstände (Beispiel) */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  text-align: center;
+  margin-top: calc(var(--space) * 0.5);
+}
+.hero__role {
+  text-align: center;
+  letter-spacing: 0.15em;
+  opacity: 0.9;
+}
 /* ------------------------------- Responsive ------------------------------- */
-@media (max-width: 1100px) {
+@media (max-width: 700px) {
+  .hero {
+    width: 100vw;
+    min-width: 0;
+    height: 100dvh;
+    min-height: 100dvh;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background: var(--bg, #262e34);
+  }
+
+  .hero-container {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    position: relative;
+  }
+
   .grid {
-    grid-template-columns: 1fr;
-    row-gap: r(32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: r(24);
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero_visual {
+    width: 100vw;
+    min-height: unset;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: r(32);
+    margin-bottom: r(12);
+    position: relative;
+  }
+
+  .hero_visual .hero_shape {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: r(320);
+    height: r(320);
+    transform: none;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .hero_photo {
+    position: relative;
+    width: r(220);
+    margin: 0 auto;
+    left: 0;
+    top: r(-60);
+    z-index: 2;
+    display: block;
+  }
+
+  .copy {
+    position: static;
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    left: unset;
+    top: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    padding: 0 r(12);
+    margin: 0;
+    gap: r(10);
+  }
+
+  .copy h1 {
+    font-size: r(32);
+    line-height: 1.1;
     text-align: center;
+    width: 100%;
+    margin: 0 0 r(8) 0;
+    padding: 0;
   }
-  .visual {
-    min-height: auto;
+
+  .copy .role {
+    font-size: r(16);
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    letter-spacing: 0.18em;
   }
-  .visual .bg-shape {
+
+  .hero-logo-block {
+    position: absolute;
+    top: r(16);
+    left: r(16);
+    right: unset;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 10;
+    color: var(--primary);
+  }
+
+  .side-icons {
+    position: absolute;
+    top: r(16);
+    right: r(16);
+    left: unset;
+    flex-direction: column;
+    gap: r(10);
+    z-index: 10;
+  }
+
+  .scroll-down {
+    position: absolute;
     left: 50%;
-    top: r(-20);
-    transform: translateX(-50%);      /* Shape mittig hinter dem Portrait */
-    width: r(420);
+    bottom: r(16);
+    transform: translateX(-50%);
+    width: r(32);
+    height: r(32);
+    opacity: 0.95;
+    z-index: 10;
   }
-  .portrait {
-    width: r(360);
-    margin-left: 0;
-    margin-inline: auto;
+  .burger {
+    display: inline-flex;
   }
-  .copy { margin-inline: auto; }
-   .copy .name { white-space: normal; }
-  .side-icons { right: r(16); }
+  .burger-menu {
+    display: block;
+  }
+  /* nur Mobile zeigen */
+  .burger-toggle {
+    display: none;
+  }
+  @media (max-width: 899px) {
+    .burger-toggle {
+      display: inline-flex;
+    }
+  }
+
+  /* Checkbox selbst verstecken */
+  .menu-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Button-Position im Hero (anpassen, falls nötig) */
+  .burger-toggle {
+    position: absolute;
+    top: 25px;
+    right: 80px;
+    z-index: 60;
+    width: 34px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  /* SVG-Linien vorbereiten */
+  .burger-svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+  .line {
+    stroke: var(--text); /* deine Creme-weiß-Farbe kommt aus Tokens */
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: transform 0.22s ease, opacity 0.15s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* → X-Animation, wenn gecheckt */
+  .menu-toggle:checked + .burger-toggle .line--top {
+    /* von y=2 auf y=16 (16-2=14) verschieben, dann rotieren */
+    transform: translateY(14px) rotate(45deg);
+  }
+  .menu-toggle:checked + .burger-toggle .line--middle {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  .menu-toggle:checked + .burger-toggle .line--bottom {
+    /* von y=30 auf y=16 (30-16=14) nach oben, dann rotieren */
+    transform: translateY(-14px) rotate(-45deg);
+  }
+}
+@media (min-width: 900px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space);
+  }
+  .hero__visual {
+    margin: 0 auto;
+  }
+  .hero__title,
+  .hero__role {
+    text-align: left;
+  }
+  .hide-on-mobile {
+    display: initial !important;
+  }
 }
