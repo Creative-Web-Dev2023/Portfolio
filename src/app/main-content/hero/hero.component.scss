@@ -1,68 +1,172 @@
-@use "tokens" as t;
-@use "sass:math";
 
-/* ---- Basis ---- */
 .hero {
+  min-height: 100dvh;
   background: var(--bg);
   color: var(--text);
+  position: relative;
+  padding: 16px 16px 72px;
 }
-.hero-container { max-width: var(--container); margin: 0 auto; padding: 112px 64px; }
 
-/* zwei Spalten: links Visual, rechts Text */
-.grid {
-  display: grid;
-  grid-template-columns: 520px 1fr;
+/* — Top-Bar (Logo links, Burger rechts) — */
+.hero__bar {
+  display: flex;
   align-items: center;
-  gap: 72px;
+  justify-content: space-between;
 }
 
-/* Visual: Shape + Foto deckungsgleich übereinander */
-.hero_visual { display: grid; place-items: center; }
-.hero_shape, .hero_photo { grid-area: 1 / 1; }
+/* Logo-Block */
 
-/* Desktop: Foto kleiner als Shape, leicht nach unten → bleibt „im Blob“ */
-.hero_shape { width: 520px; height: auto; }
-.hero_photo { width: 440px; height: auto; transform: translateY(6%); }
 
-/* Text rechts */
-.copy { display: grid; gap: 28px; }
-.copy h1 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 88px;
-  line-height: 1.08;
-}
-.copy .role {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: 32px;
-  letter-spacing: .22em;
-  opacity: .95;
-}
-
-/* Logo-Block (einfach) */
+/* Logo-Container */
 .hero-logo-block {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  color: var(--primary);
+  position: relative;
+  width: 58px;
+  /* Höhe des ganzen Blocks inkl. Textzeilen darunter */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--primary); /* <- S wird grün via currentColor */
 }
-.hero-logo-name { font-family: var(--font-display); font-size: 17px; color: var(--text); }
-.hero-logo-dev  { font-family: var(--font-sans); font-weight: 300; font-size: 15px; }
 
-/* ---- Mobile ≤700px ---- */
-@media (max-width: 700px) {
-  .hero-container { padding: 24px 16px; }
-  .grid { display: block; }                  /* untereinander */
-  .hero_visual {
-    width: min(360px, 88vw);
-    margin: 28px auto 12px;
+/* Fläche 58x38 zum Stapeln von S + Klammern */
+.hero-logo {
+  position: relative;
+  width: 58px;
+  height: 72px;
+  top: 27px;
+}
+
+/* S: exakt 48x30 wie in Figma – der <g>-Transform erledigt den Rest */
+.logo-s {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 58px;   /* ViewBox bleibt 58x38 */
+  height: 38px;
+  display: block;
+}
+
+/* Klammern positionieren (Figma: 10x19 @ y=9, x=6 bzw. 36) */
+.brace {
+  position: absolute;
+  top: 12px;
+  width: 10px;
+  height: 19px;
+  pointer-events: none;
+}
+.brace--left  { left: 9px; }
+.brace--right { right: 10px; }
+
+/* Beschriftung darunter – Figma-Typo */
+.hero-logo-name {
+  font-family: 'Anta', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text); /* creme-weiß */
+}
+.hero-logo-dev {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--primary); /* grün wie im Mock */
+}
+
+/* — Visual (Shape + Portrait) — */
+.hero-visual {
+  display: grid;
+  place-items: center;
+  width: min(90vw, 360px);
+  margin: 28px auto 12px;
+}
+
+.hero-visual .shape,
+.hero-visual .photo { grid-area: 1 / 1; }
+
+.hero-visual .shape { width: 100%; height: auto; }
+.hero-visual .photo {
+  width: min(65vw, 280px);
+  height: auto;
+  transform: translateY(6%); /* lässt die Person etwas „aus der Form“ kommen */
+  z-index: 1;
+}
+
+/* — Typo — */
+.hero-title {
+  font-family: var(--font-display, "Anta", sans-serif);
+  font-size: clamp(2rem, 8vw, 3rem);
+  text-align: center;
+  margin-top: 8px;
+}
+.hero-role {
+  font-family: var(--font-sans, "Josefin Sans", sans-serif);
+  text-align: center;
+  letter-spacing: 0.18em;
+  opacity: 0.95;
+  margin-top: 6px;
+}
+
+/* — Scroll-Pfeil — */
+.scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: inline-block;
+}
+
+/* — Burger — (nur mobil sichtbar) */
+.nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.burger {
+  display: inline-flex;
+  width: 32px; height: 32px;
+  align-items: center; justify-content: center;
+}
+.burger svg { width: 28px; height: 28px; }
+.line { stroke: var(--text); stroke-width: 2; stroke-linecap: round; transition: .2s; }
+.nav-toggle:checked + .burger .top { transform: translateY(10px) rotate(45deg); }
+.nav-toggle:checked + .burger .mid  { opacity: 0; }
+.nav-toggle:checked + .burger .bot  { transform: translateY(-10px) rotate(-45deg); }
+
+/* — Overlay-Menü (Checkbox steuert Sichtbarkeit) — */
+.overlay {
+  position: fixed; inset: 0; pointer-events: none;
+  display: grid; place-items: center;
+  background: rgba(0,0,0,.45);
+  opacity: 0; transition: .2s;
+}
+.nav-toggle:checked ~ .overlay { opacity: 1; pointer-events: auto; }
+
+/* einfache grüne Bubble (du kannst auch dein shape.svg als bg benutzen) */
+.menu {
+  background: var(--primary);
+  color: #0f1b20;               /* dunkler Text auf grün */
+  border-radius: 40% 60% 60% 40% / 40% 45% 55% 60%;
+  padding: 48px 64px;
+  display: grid; gap: 20px;
+  text-align: center;
+}
+.menu a { font: 400 22px/1.2 var(--font-sans, "Josefin Sans", sans-serif); }
+
+/* — Desktop-Layout — */
+@media (min-width: 900px) {
+  .burger, .nav-toggle, .overlay { display: none; }
+
+  .hero {
+    padding: 40px 64px 80px;
+    min-height: 72vh;
+    display: grid;
+    grid-template-columns: 520px 1fr;   /* links Visual, rechts Text */
+    align-items: center;
+    gap: 72px;
+    max-width: 1214px;
+    margin-inline: auto;
   }
-  .hero_shape { width: 100%; }
-  .hero_photo { width: 74%; transform: translateY(4%); }  /* 70–78 %/4–8 % feinjustieren */
 
-  .copy { text-align: center; }
-  .copy h1 { font-size: 32px; }
-  .copy .role { font-size: 16px; letter-spacing: .18em; }
+  .hero-visual { width: 480px; margin: 0; }
+  .hero-visual .photo { width: 440px; transform: translateY(8%); }
 
-  .hide-on-mobile { display: none !important; }
+  .hero-title, .hero-role { text-align: left; }
 }

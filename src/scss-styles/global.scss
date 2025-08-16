@@ -1,6 +1,7 @@
 @use "tokens";
 @use "fonts";
 
+
 /* -------- Minimal Reset -------- */
 *,
 *::before,
@@ -11,10 +12,6 @@ html, body {
   height: 100%;
   scroll-behavior: smooth;
 }
-
-@use "tokens";
-@use "fonts";
-
 /* -------- Reset (kurz) -------- */
 *,
 *::before,

@@ -1,46 +1,26 @@
-/* Lädt lokale Schriftdateien aus /public/fonts
-    */
-
+/* Anta Regular */
 @font-face {
-  font-family: 'Anta';
-  src: url('/fonts/Anta-Regular.woff2') format('woff2');
+  font-family: "Anta";
+  src: url("/fonts/Anta-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+/* Josefin Sans Regular */
 @font-face {
-  font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-Regular.woff2') format('woff2');
+  font-family: "Josefin Sans";
+  src: url("/fonts/JosefinSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
 
+/* Roboto Mono – du hast nur die *Italic*-Datei */
 @font-face {
-  font-family: 'Roboto Mono';
-  src: url('/fonts/RobotoMono-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Roboto Mono";
+  src: url("/fonts/RobotoMono-Italic.woff2") format("woff2");
+  font-weight: 400;   /* oder 500, wenn es eher Medium ist */
+  font-style: italic; /* WICHTIG – Datei ist kursiv */
   font-display: swap;
-}
-@font-face {
-  font-family: 'Roboto Mono';
-  src: url('/fonts/RobotoMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --font-display: "Anta", "Josefin Sans", system-ui, sans-serif;
-  --font-sans: "Josefin Sans", system-ui, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }

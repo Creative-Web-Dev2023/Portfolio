@@ -1,96 +1,66 @@
-<section id="hero" class="hero">
-  <div class="hero-container container">
-    <!-- Logo-Block oben rechts -->
-    <div class="hero-logo-block">
-      <!-- Stapel-Container -->
-      <div class="logo-stack" aria-hidden="true">
-        <!-- S-Icon: bleibt grün über currentColor -->
-        <svg class="logo-s" viewBox="0 0 54 34">
-          <path d="M33.1745 32H40.6913L51 17.3285L40.6913 2H33.1745L19.2148 32H12.3423L3 17.3285L12.3423 2H19.2148"
-            stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-        </svg>
-        <!-- Klammern als PNG, über dem S positioniert -->
-        <img class="brace-left" src="/icons/brace-left.png" alt="">
-        <img class="brace-right" src="/icons/brace-right.png" alt="">
-      </div>
-      <div class="hero-logo-name">G.Ströbl</div>
-      <div class="hero-logo-dev">developer</div>
-    </div>
+<section class="hero">
+  <!-- Top-Bar -->
+  <div class="hero__bar">
+    <!-- Logo -->
+   <div class="hero-logo-block">
+  <div class="hero-logo">
+    <!-- linke Klammer -->
+    <img class="brace brace--left" src="/icons/brace-left.svg" alt="" aria-hidden="true" />
 
-    <!-- Seitenicons -->
-    <ul class="side-icons hide-on-mobile" aria-label="profile links">
-      <li>
-        <a href="mailto:stroeblgabriela76@gmail.com" aria-label="Contact">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"
-              fill="none" />
-            <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" fill="none" />
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/Creative-Web-Dev2023" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2C6.48 2 2 6.58 2 12.26c0 4.49 2.87 8.3 6.84 9.64.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.17-1.1-1.48-1.1-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.23 9.23 0 012.5-.34c.85 0 1.7.11 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0022 12.26C22 6.58 17.52 2 12 2z"
-              fill="currentColor" />
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/gabriela-str%C3%B6bl-836836258/" target="_blank" rel="noopener"
-          aria-label="LinkedIn">
-          <svg class="icon" width="23" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm8 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C21.43 7.6 24 10.06 24 14.4V24h-5v-8.4c0-2-.04-4.6-3-4.6s-3.5 2.2-3.5 4.4V24H8V8z"
-              stroke="currentColor" stroke-width="1.1" fill="none" />
-          </svg>
-        </a>
-      </li>
-
-    </ul>
-    <div class="grid">
-      <div class="hero_visual">
-        <img class="hero_shape" src="/img/hero-section/shape.svg" alt="" aria-hidden="true">
-        <img class="hero_photo" src="/img/hero-section/portrait.png" alt="hero photo">
-      </div>
-
-
-      <div class="copy">
-        <h1>Gabriela Ströbl</h1>
-        <p class="role">FRONTEND DEVELOPER</p>
-      </div>
-    </div>
-    <a class="scroll-down" href="#why-me" aria-label="Scroll to Why me">
-      <img src="/img/hero-section/arrow-down.svg" alt="">
-    </a>
-    <div class="anchor-marker" id="why-me"></div>
-  </div>
-
-  <!-- Burger + Toggle-->
-  <input type="checkbox" id="menuToggle" class="menu-toggle" (change)="onMenuToggle($event)" />
-  <label for="menuToggle" class="burger-toggle hide-desktop" aria-label="Open menu">
-    <svg class="burger-svg" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-      <path class="line line--top" d="M1 2H31" />
-      <path class="line line--middle" d="M1 16H31" />
-      <path class="line line--bottom" d="M1 30H31" />
+    <!-- S-Rahmen (48x30 @ x=2,y=5, stroke=4) -->
+    <svg class="logo-s" viewBox="0 0 58 38" aria-hidden="true">
+      <g transform="translate(2,5) scale(1,0.88235294)">
+        <path
+          d="M33.1745 36H40.6913L51 19.3285L40.6913 2H33.1745L19.2148 36H12.3423L3 19.3285L12.3423 2H19.2148"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+        />
+      </g>
     </svg>
-  </label>
 
-  <!-- Overlay + Menu-Bubble (wie zuvor), sichtbar bei :checked -->
-  <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()">
-    <div class="menu-bubble" id="mobile-menu" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
-      <nav class="menu" aria-label="Primary">
-        <a href="#why-me" (click)="onNavigate()">Why me</a>
-        <a href="#skills" (click)="onNavigate()">Skills</a>
-        <a href="#projects" (click)="onNavigate()">Projects</a>
-        <a href="#contact" (click)="onNavigate()">Contact</a>
-      </nav>
-      <div class="lang">
-        <button class="lang__btn">DE</button>
-        <button class="lang__btn is-active">EN</button>
-      </div>
-    </div>
+    <!-- rechte Klammer -->
+    <img class="brace brace--right" src="/icons/brace-right.svg" alt="" aria-hidden="true" />
   </div>
 
+  <div class="hero-logo-name">G.Ströbl</div>
+  <div class="hero-logo-dev">developer</div>
+</div>
+
+
+    <!-- Burger (CSS-only) -->
+    <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+    <label for="nav-toggle" class="burger" aria-label="Menu">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path class="line top" d="M2 6H30" />
+        <path class="line mid" d="M2 16H30" />
+        <path class="line bot" d="M2 26H30" />
+      </svg>
+    </label>
+  </div>
+
+  <!-- Visual: Shape + Portrait -->
+  <div class="hero-visual">
+    <img class="shape" src="/img/hero-section/shape.svg" alt="" aria-hidden="true" />
+    <img class="photo" src="/img/hero-section/portrait.png" alt="Portrait Gabriela Ströbl" />
+  </div>
+
+  <h1 class="hero-title">Gabriela Ströbl</h1>
+  <p class="hero-role">FRONTEND DEVELOPER</p>
+
+  <a class="scroll" href="#why-me" aria-label="Scroll to Why me">
+    <img src="/img/hero-section/arrow-down.svg" alt="">
+  </a>
+
+  <!-- Overlay-Menü (öffnet über Checkbox) -->
+  <div class="overlay">
+    <nav class="menu">
+      <a href="#why-me" onclick="document.getElementById('nav-toggle').checked=false">Why me</a>
+      <a href="#skills" onclick="document.getElementById('nav-toggle').checked=false">Skills</a>
+      <a href="#projects" onclick="document.getElementById('nav-toggle').checked=false">Projects</a>
+      <a href="#contact" onclick="document.getElementById('nav-toggle').checked=false">Contact</a>
+    </nav>
+  </div>
 </section>
