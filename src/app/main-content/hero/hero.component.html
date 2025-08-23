@@ -1,50 +1,42 @@
 <section class="hero">
   <!-- Top-Bar -->
-  <div class="hero__bar">
-    <!-- Logo -->
-   <div class="hero-logo-block">
-  <div class="hero-logo">
-    <!-- linke Klammer -->
-    <img class="brace brace--left" src="/icons/brace-left.svg" alt="" aria-hidden="true" />
+  <header class="hero-bar">
+    <div class="hero-logo-block">
+      <div class="hero-logo">
+        <img class="brace brace--left" src="/icons/brace-left.svg" alt="" aria-hidden="true" />
+        <svg class="logo-s" viewBox="0 0 58 38" aria-hidden="true">
+          <g transform="translate(2,5) scale(1,0.88235294)">
+            <path d="M33.1745 36H40.6913L51 19.3285L40.6913 2H33.1745L19.2148 36H12.3423L3 19.3285L12.3423 2H19.2148"
+              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"
+              vector-effect="non-scaling-stroke" />
+          </g>
+        </svg>
+        <img class="brace brace--right" src="/icons/brace-right.svg" alt="" aria-hidden="true" />
+      </div>
+      <div class="hero-logo-name">G.Ströbl</div>
+      <div class="hero-logo-dev">developer</div>
+    </div>
 
-    <!-- S-Rahmen (48x30 @ x=2,y=5, stroke=4) -->
-    <svg class="logo-s" viewBox="0 0 58 38" aria-hidden="true">
-      <g transform="translate(2,5) scale(1,0.88235294)">
-        <path
-          d="M33.1745 36H40.6913L51 19.3285L40.6913 2H33.1745L19.2148 36H12.3423L3 19.3285L12.3423 2H19.2148"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="4"
-          stroke-linecap="round"
-          vector-effect="non-scaling-stroke"
-        />
-      </g>
-    </svg>
+    <!-- Burger -->
+    <button class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Menü umschalten">
+      <img [src]="menuOpen ? '/icons/burger-menu/close.svg' : '/icons/burger-menu/default.svg'" alt="Menü" width="32"
+        height="32" />
+    </button>
+  </header>
 
-    <!-- rechte Klammer -->
-    <img class="brace brace--right" src="/icons/brace-right.svg" alt="" aria-hidden="true" />
-  </div>
+  <!-- Einfaches Mobile-Menü -->
+  <nav class="mobile-nav" *ngIf="menuOpen">
+    <ul>
+      <li><a href="#why-me" (click)="closeMenu()">Why me</a></li>
+      <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+      <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+    </ul>
+  </nav>
 
-  <div class="hero-logo-name">G.Ströbl</div>
-  <div class="hero-logo-dev">developer</div>
-</div>
-
-
-    <!-- Burger (CSS-only) -->
-    <input id="nav-toggle" type="checkbox" class="nav-toggle" />
-    <label for="nav-toggle" class="burger" aria-label="Menu">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path class="line top" d="M2 6H30" />
-        <path class="line mid" d="M2 16H30" />
-        <path class="line bot" d="M2 26H30" />
-      </svg>
-    </label>
-  </div>
-
-  <!-- Visual: Shape + Portrait -->
+  <!-- Visual: Portrait + Shape (eine Datei) -->
   <div class="hero-visual">
-    <img class="shape" src="/img/hero-section/shape.svg" alt="" aria-hidden="true" />
-    <img class="photo" src="/img/hero-section/portrait.png" alt="Portrait Gabriela Ströbl" />
+    <img class="visual" src="img/hero-section/portrait-shape.svg" alt="Portrait Gabriela Ströbl" />
   </div>
 
   <h1 class="hero-title">Gabriela Ströbl</h1>
@@ -53,14 +45,4 @@
   <a class="scroll" href="#why-me" aria-label="Scroll to Why me">
     <img src="/img/hero-section/arrow-down.svg" alt="">
   </a>
-
-  <!-- Overlay-Menü (öffnet über Checkbox) -->
-  <div class="overlay">
-    <nav class="menu">
-      <a href="#why-me" onclick="document.getElementById('nav-toggle').checked=false">Why me</a>
-      <a href="#skills" onclick="document.getElementById('nav-toggle').checked=false">Skills</a>
-      <a href="#projects" onclick="document.getElementById('nav-toggle').checked=false">Projects</a>
-      <a href="#contact" onclick="document.getElementById('nav-toggle').checked=false">Contact</a>
-    </nav>
-  </div>
 </section>

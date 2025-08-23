@@ -1,4 +1,4 @@
-
+/* === Hero === */
 .hero {
   min-height: 100dvh;
   background: var(--bg);
@@ -7,166 +7,83 @@
   padding: 16px 16px 72px;
 }
 
-/* — Top-Bar (Logo links, Burger rechts) — */
-.hero__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Top-Bar */
+.hero-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; position: relative;
 }
 
 /* Logo-Block */
-
-
-/* Logo-Container */
 .hero-logo-block {
-  position: relative;
-  width: 58px;
-  /* Höhe des ganzen Blocks inkl. Textzeilen darunter */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  color: var(--primary); /* <- S wird grün via currentColor */
+  position: absolute; top: 24px; left: 24px;
+  width: 58px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  color: var(--primary); z-index: 10;
 }
+.hero-logo { position: relative; width: 58px; height: 72px; top: 27px; }
+.logo-s { position: absolute; left: 0; top: 0; width: 58px; height: 38px; display: block; }
+.brace { position: absolute; top: 12px; width: 10px; height: 19px; pointer-events: none; }
+.brace--left { left: 9px; } .brace--right { right: 10px; }
+.hero-logo-name { font-family: "Anta", system-ui, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.2; color: var(--text); }
+.hero-logo-dev  { font-family: "Josefin Sans", system-ui, sans-serif; font-weight: 300; font-size: 14px; line-height: 1.2; color: var(--primary); }
 
-/* Fläche 58x38 zum Stapeln von S + Klammern */
-.hero-logo {
-  position: relative;
-  width: 58px;
-  height: 72px;
-  top: 27px;
-}
-
-/* S: exakt 48x30 wie in Figma – der <g>-Transform erledigt den Rest */
-.logo-s {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 58px;   /* ViewBox bleibt 58x38 */
-  height: 38px;
-  display: block;
-}
-
-/* Klammern positionieren (Figma: 10x19 @ y=9, x=6 bzw. 36) */
-.brace {
-  position: absolute;
-  top: 12px;
-  width: 10px;
-  height: 19px;
-  pointer-events: none;
-}
-.brace--left  { left: 9px; }
-.brace--right { right: 10px; }
-
-/* Beschriftung darunter – Figma-Typo */
-.hero-logo-name {
-  font-family: 'Anta', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  color: var(--text); /* creme-weiß */
-}
-.hero-logo-dev {
-  font-family: 'Josefin Sans', system-ui, sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.2;
-  color: var(--primary); /* grün wie im Mock */
-}
-
-/* — Visual (Shape + Portrait) — */
+/* Visual (eine SVG-Datei) */
 .hero-visual {
   display: grid;
   place-items: center;
   width: min(90vw, 360px);
   margin: 28px auto 12px;
 }
-
-.hero-visual .shape,
-.hero-visual .photo { grid-area: 1 / 1; }
-
-.hero-visual .shape { width: 100%; height: auto; }
-.hero-visual .photo {
-  width: min(65vw, 280px);
+.hero-visual .visual {
+  width: 100%;
   height: auto;
-  transform: translateY(6%); /* lässt die Person etwas „aus der Form“ kommen */
-  z-index: 1;
+  display: block;
 }
 
-/* — Typo — */
-.hero-title {
-  font-family: var(--font-display, "Anta", sans-serif);
-  font-size: clamp(2rem, 8vw, 3rem);
-  text-align: center;
-  margin-top: 8px;
-}
-.hero-role {
-  font-family: var(--font-sans, "Josefin Sans", sans-serif);
-  text-align: center;
-  letter-spacing: 0.18em;
-  opacity: 0.95;
-  margin-top: 6px;
-}
+/* Typo */
+.hero-title { font-family: var(--font-display, "Anta", sans-serif); font-size: clamp(2rem, 8vw, 3rem); line-height: 120%; font-weight: 400; text-align: center; margin-top: 8px; }
+.hero-role  { font-family: var(--font-sans, "Josefin Sans", sans-serif); font-size: 1.5rem; text-align: center; line-height: 120%; font-weight: 400; opacity: .95; margin-top: 6px; }
 
-/* — Scroll-Pfeil — */
-.scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  display: inline-block;
-}
+/* Scroll-Button */
+.scroll { position: absolute; left: 50%; top: 617px; transform: translateX(-50%); display: inline-block; }
 
-/* — Burger — (nur mobil sichtbar) */
-.nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+/* Burger (ein Icon-Bild, kein Checkbox-Hack) */
 .burger {
-  display: inline-flex;
-  width: 32px; height: 32px;
-  align-items: center; justify-content: center;
+  width: 40px; height: 40px; display: grid; place-items: center;
+  border: 1px solid #ffffff33; border-radius: 10px; background: transparent; cursor: pointer;
+  z-index: 100; position: absolute; top: 60px; right: 24px; padding: 0;
 }
-.burger svg { width: 28px; height: 28px; }
-.line { stroke: var(--text); stroke-width: 2; stroke-linecap: round; transition: .2s; }
-.nav-toggle:checked + .burger .top { transform: translateY(10px) rotate(45deg); }
-.nav-toggle:checked + .burger .mid  { opacity: 0; }
-.nav-toggle:checked + .burger .bot  { transform: translateY(-10px) rotate(-45deg); }
+.burger img { width: 32px; height: 32px; display: block; }
 
-/* — Overlay-Menü (Checkbox steuert Sichtbarkeit) — */
-.overlay {
-  position: fixed; inset: 0; pointer-events: none;
-  display: grid; place-items: center;
-  background: rgba(0,0,0,.45);
-  opacity: 0; transition: .2s;
+/* Mobile-Menü (wird via *ngIf gezeigt) */
+.mobile-nav {
+  position: fixed; inset: 0; background: rgba(0,0,0,.45);
+  display: flex; align-items: center; justify-content: center; z-index: 99;
 }
-.nav-toggle:checked ~ .overlay { opacity: 1; pointer-events: auto; }
-
-/* einfache grüne Bubble (du kannst auch dein shape.svg als bg benutzen) */
-.menu {
-  background: var(--primary);
-  color: #0f1b20;               /* dunkler Text auf grün */
+.mobile-nav ul {
+  list-style: none; margin: 0; padding: 64px 80px;
   border-radius: 40% 60% 60% 40% / 40% 45% 55% 60%;
-  padding: 48px 64px;
-  display: grid; gap: 20px;
-  text-align: center;
+  background: var(--primary);
+  display: flex; flex-direction: column; gap: 40px;
+  min-width: 320px; min-height: 420px; text-align: center;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,.1); align-items: center; justify-content: center;
 }
-.menu a { font: 400 22px/1.2 var(--font-sans, "Josefin Sans", sans-serif); }
+.mobile-nav a {
+  color: #0f1b20; text-decoration: none;
+  font-family: "Anta", system-ui, sans-serif; font-size: 2rem; letter-spacing: .04em;
+  transition: transform .2s, opacity .2s;
+}
+.mobile-nav a:hover { transform: scale(1.07); opacity: .85; }
 
-/* — Desktop-Layout — */
+/* Desktop */
 @media (min-width: 900px) {
-  .burger, .nav-toggle, .overlay { display: none; }
+  .burger, .mobile-nav { display: none !important; }
 
   .hero {
-    padding: 40px 64px 80px;
-    min-height: 72vh;
-    display: grid;
-    grid-template-columns: 520px 1fr;   /* links Visual, rechts Text */
-    align-items: center;
-    gap: 72px;
-    max-width: 1214px;
-    margin-inline: auto;
+    padding: 40px 64px 80px; min-height: 72vh;
+    display: grid; grid-template-columns: 520px 1fr; align-items: center; gap: 72px;
+    max-width: 1214px; margin-inline: auto; position: relative;
   }
-
+  .hero-logo-block { position: absolute; top: 121px; left: 50%; transform: translateX(-50%); }
   .hero-visual { width: 480px; margin: 0; }
-  .hero-visual .photo { width: 440px; transform: translateY(8%); }
-
   .hero-title, .hero-role { text-align: left; }
 }
