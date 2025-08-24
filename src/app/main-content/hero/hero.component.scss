@@ -5,33 +5,81 @@
   color: var(--text);
   position: relative;
   padding: 16px 16px 72px;
-}
+} /* <<< WICHTIG: diese Klammer hat vorher gefehlt */
 
 /* Top-Bar */
 .hero-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 20px; position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  position: relative;
+  z-index: 2000; /* über dem Overlay (Burger/Close bleibt sichtbar) */
 }
 
 /* Logo-Block */
 .hero-logo-block {
-  position: absolute; top: 24px; left: 24px;
-  width: 58px; display: flex; flex-direction: column; align-items: center; gap: 2px;
-  color: var(--primary); z-index: 10;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--primary);
+  z-index: 10;
 }
-.hero-logo { position: relative; width: 58px; height: 72px; top: 27px; }
-.logo-s { position: absolute; left: 0; top: 0; width: 58px; height: 38px; display: block; }
-.brace { position: absolute; top: 12px; width: 10px; height: 19px; pointer-events: none; }
-.brace--left { left: 9px; } .brace--right { right: 10px; }
-.hero-logo-name { font-family: "Anta", system-ui, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.2; color: var(--text); }
-.hero-logo-dev  { font-family: "Josefin Sans", system-ui, sans-serif; font-weight: 300; font-size: 14px; line-height: 1.2; color: var(--primary); }
+.hero-logo {
+  position: relative;
+  width: 58px;
+  height: 72px;
+  top: 27px;
+}
+.logo-s {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 58px;
+  height: 38px;
+  display: block;
+}
+.brace {
+  position: absolute;
+  top: 12px;
+  width: 10px;
+  height: 19px;
+  pointer-events: none;
+}
+.brace--left {
+  left: 9px;
+}
+.brace--right {
+  right: 10px;
+}
+.hero-logo-name {
+  font-family: "Anta", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text);
+}
+.hero-logo-dev {
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--primary);
+}
 
-/* Visual (eine SVG-Datei) */
+/* Visual */
 .hero-visual {
   display: grid;
   place-items: center;
   width: min(90vw, 360px);
   margin: 28px auto 12px;
+  position: relative;
+  z-index: 0;
 }
 .hero-visual .visual {
   width: 100%;
@@ -40,50 +88,232 @@
 }
 
 /* Typo */
-.hero-title { font-family: var(--font-display, "Anta", sans-serif); font-size: clamp(2rem, 8vw, 3rem); line-height: 120%; font-weight: 400; text-align: center; margin-top: 8px; }
-.hero-role  { font-family: var(--font-sans, "Josefin Sans", sans-serif); font-size: 1.5rem; text-align: center; line-height: 120%; font-weight: 400; opacity: .95; margin-top: 6px; }
+.hero-title {
+  font-family: var(--font-display, "Anta", sans-serif);
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 120%;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-role {
+  font-family: var(--font-sans, "Josefin Sans", sans-serif);
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 120%;
+  font-weight: 400;
+  opacity: 0.95;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
 
-/* Scroll-Button */
-.scroll { position: absolute; left: 50%; top: 617px; transform: translateX(-50%); display: inline-block; }
+/* Scroll-Button – sitzt unter Titel/Rolle */
+.scroll {
+  position: static;
+  margin: 32px auto 0;
+  display: block;
+  z-index: 1;
+  transform: none;
+  left: auto;
+  bottom: auto;
+}
 
-/* Burger (ein Icon-Bild, kein Checkbox-Hack) */
+/* Burger */
 .burger {
-  width: 40px; height: 40px; display: grid; place-items: center;
-  border: 1px solid #ffffff33; border-radius: 10px; background: transparent; cursor: pointer;
-  z-index: 100; position: absolute; top: 60px; right: 24px; padding: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2100; /* sicher über Overlay */
+  position: absolute;
+  top: 60px;
+  right: 24px;
+  padding: 0;
 }
-.burger img { width: 32px; height: 32px; display: block; }
+.burger img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
 
-/* Mobile-Menü (wird via *ngIf gezeigt) */
+/* ===================== */
+/* === Mobile-Overlay ===*/
+/* ===================== */
+
+/* Overlay */
 .mobile-nav {
-  position: fixed; inset: 0; background: rgba(0,0,0,.45);
-  display: flex; align-items: center; justify-content: center; z-index: 99;
+  position: fixed;
+  inset: 0;
+  z-index: 1500; /* über Hero-Inhalt (z-index:1), unter Header (2000) */
+  background: #1e262b;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 96px 16px 24px;
 }
-.mobile-nav ul {
-  list-style: none; margin: 0; padding: 64px 80px;
-  border-radius: 40% 60% 60% 40% / 40% 45% 55% 60%;
-  background: var(--primary);
-  display: flex; flex-direction: column; gap: 40px;
-  min-width: 320px; min-height: 420px; text-align: center;
-  box-shadow: 0 4px 32px 0 rgba(0,0,0,.1); align-items: center; justify-content: center;
-}
-.mobile-nav a {
-  color: #0f1b20; text-decoration: none;
-  font-family: "Anta", system-ui, sans-serif; font-size: 2rem; letter-spacing: .04em;
-  transition: transform .2s, opacity .2s;
-}
-.mobile-nav a:hover { transform: scale(1.07); opacity: .85; }
 
-/* Desktop */
+/* Bubble-Box oben im Overlay */
+.menu-box {
+  position: relative;
+  width: clamp(280px, 86vw, 520px);
+  aspect-ratio: 590 / 651;
+  /* Container bleibt normal, kein scaleX(-1) */
+  background: none;
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.25));
+  display: grid;
+  place-items: center;
+  z-index: 1600;
+  bottom: 12.25rem;
+  overflow: visible;
+}
+
+/* Nur das SVG spiegeln, nicht den Inhalt */
+.menu-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/img/hero-section/menu-bubble.svg") center / contain
+    no-repeat;
+  transform: scaleX(-1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Inhalt bleibt normal, liegt über dem gespiegelten SVG */
+.menu-list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+/* Menülinks */
+.menu-list a {
+  color: #0f1b20;
+  text-decoration: none;
+  font-family: "Anta", system-ui, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.menu-list a:hover {
+  transform: scale(1.07);
+  opacity: 0.85;
+}
+
+/* Sprachschalter */
+.language-switch {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Buttons wie Text darstellen */
+.language-switch .lang {
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #1f2937; /* inaktiv */
+  cursor: pointer;
+  border-radius: 999px;
+
+  &:focus-visible {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+/* aktive Sprache: weiß + kleine „Pille“ */
+.language-switch .lang.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Wenn das Menü offen ist, sollen Titel/Rolle/Pfeil unter der Menübox liegen (verdeckt) */
+.hero.menu-open .hero-title,
+.hero.menu-open .hero-role,
+.hero.menu-open .scroll {
+  z-index: 1900;
+}
+
+/* Wenn Menü offen: Titel/Rolle/Scroll sichtbar UNTER der Bubble platzieren */
+.hero.menu-open .hero-title,
+.hero.menu-open .hero-role {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1550;
+}
+
+/* Positionen unterhalb der Bubble (werte gern feinjustieren) */
+.hero.menu-open .hero-title {
+  top: 64vh;
+}
+.hero.menu-open .hero-role {
+  top: 70vh;
+}
+
+/* Pfeil bleibt am unteren Rand sichtbar */
+.hero.menu-open .scroll {
+  position: fixed;
+  left: 50%;
+  bottom: 12.5rem;
+  transform: translateX(-50%);
+  z-index: 1550;
+}
+.hero:not(.menu-open) .scroll {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+  display: inline-block;
+  z-index: 1;
+}
+
+/* === Desktop */
 @media (min-width: 900px) {
-  .burger, .mobile-nav { display: none !important; }
+  .burger,
+  .mobile-nav {
+    display: none !important;
+  }
 
   .hero {
-    padding: 40px 64px 80px; min-height: 72vh;
-    display: grid; grid-template-columns: 520px 1fr; align-items: center; gap: 72px;
-    max-width: 1214px; margin-inline: auto; position: relative;
+    padding: 40px 64px 80px;
+    min-height: 72vh;
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    align-items: center;
+    gap: 72px;
+    max-width: 1214px;
+    margin-inline: auto;
+    position: relative;
   }
-  .hero-logo-block { position: absolute; top: 121px; left: 50%; transform: translateX(-50%); }
-  .hero-visual { width: 480px; margin: 0; }
-  .hero-title, .hero-role { text-align: left; }
+
+  .hero-logo-block {
+    position: absolute;
+    top: 121px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .hero-visual {
+    width: 480px;
+    margin: 0;
+  }
 }

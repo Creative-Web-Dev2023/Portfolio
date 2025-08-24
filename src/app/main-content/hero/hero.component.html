@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero" [class.menu-open]="menuOpen">
   <!-- Top-Bar -->
   <header class="hero-bar">
     <div class="hero-logo-block">
@@ -7,8 +7,7 @@
         <svg class="logo-s" viewBox="0 0 58 38" aria-hidden="true">
           <g transform="translate(2,5) scale(1,0.88235294)">
             <path d="M33.1745 36H40.6913L51 19.3285L40.6913 2H33.1745L19.2148 36H12.3423L3 19.3285L12.3423 2H19.2148"
-              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"
-              vector-effect="non-scaling-stroke" />
+              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" />
           </g>
         </svg>
         <img class="brace brace--right" src="/icons/brace-right.svg" alt="" aria-hidden="true" />
@@ -19,30 +18,34 @@
 
     <!-- Burger -->
     <button class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Menü umschalten">
-      <img [src]="menuOpen ? '/icons/burger-menu/close.svg' : '/icons/burger-menu/default.svg'" alt="Menü" width="32"
-        height="32" />
+      <img [src]="menuOpen ? '/icons/burger-menu/close.svg' : '/icons/burger-menu/default.svg'" alt="Menü" width="32" height="32" />
     </button>
   </header>
 
-  <!-- Einfaches Mobile-Menü -->
-  <nav class="mobile-nav" *ngIf="menuOpen">
-    <ul>
-      <li><a href="#why-me" (click)="closeMenu()">Why me</a></li>
-      <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
-      <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
-      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Visual: Portrait + Shape (eine Datei) -->
+  <!-- Portrait + Shape -->
+ <!-- Visual + Texte -->
   <div class="hero-visual">
     <img class="visual" src="img/hero-section/portrait-shape.svg" alt="Portrait Gabriela Ströbl" />
   </div>
-
   <h1 class="hero-title">Gabriela Ströbl</h1>
   <p class="hero-role">FRONTEND DEVELOPER</p>
-
   <a class="scroll" href="#why-me" aria-label="Scroll to Why me">
     <img src="/img/hero-section/arrow-down.svg" alt="">
   </a>
+
+  <!-- Mobile-Overlay (einmal!) -->
+  <nav class="mobile-nav" *ngIf="menuOpen">
+    <div class="menu-box">
+      <ul class="menu-list">
+        <li><a href="#why-me" (click)="closeMenu()">Why me</a></li>
+        <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+        <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+        <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+        <li class="language-switch">
+          <button class="lang" [class.active]="currentLang==='de'" (click)="setLanguage('de')">DE</button>
+          <button class="lang" [class.active]="currentLang==='en'" (click)="setLanguage('en')">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </section>
