@@ -1,47 +1,78 @@
+/* Grundfarben kommen wie im Hero aus :root – hier nur genutzt */
 .why {
-  display: grid;
-  gap: 1rem;
-  text-align: center;
+  background: var(--bg);
   color: var(--text);
+     
 }
 
-.why__item {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: .75rem;
-  align-items: center;
-  justify-content: center;
+.why-wrap {
+  max-width: 880px;     
   margin-inline: auto;
-  max-width: 340px;
+  text-align: center;
 }
 
-.why__icon {
-  width: 32px; height: 40px;
-  background: var(--primary);
-  border-radius: 6px; /* Platzhalter für dein SVG */
-}
-
-.why__heading {
-  font-weight: 700;
-  font-size: 1.125rem; /* ~18px */
+/* Titel */
+.why-title {
+  font-family: "Anta", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
   color: var(--primary);
-  text-align: left;
+  letter-spacing: 0.02em;
+  margin: 8px 0 24px;
 }
 
-.why__text {
-  max-width: 34ch;
-  margin-inline: auto;
-  font-size: 1rem;
-  opacity: .95;
+/* Lead-Zeile mit Pin */
+.why-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 8px 0 24px;
 }
 
-.why__scroll {
-  display: grid; place-items: center;
-  width: 38px; height: 89px; margin: .5rem auto 0;
-  border-radius: 30px; border: 1px solid var(--primary);
+.why-pin {
+  width: 28px;
+  height: 36px;
+  display: inline-block;
+  background: currentColor;
+  color: var(--primary);
+  -webkit-mask: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path d='M12 2C7.58 2 4 5.58 4 10c0 5.25 6.53 11.33 7.02 11.79a1.4 1.4 0 0 0 1.96 0C13.47 21.33 20 15.25 20 10c0-4.42-3.58-8-8-8zm0 11.25A3.25 3.25 0 1 1 12 6.75a3.25 3.25 0 0 1 0 6.5z'/></svg>")
+               center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path d='M12 2C7.58 2 4 5.58 4 10c0 5.25 6.53 11.33 7.02 11.79a1.4 1.4 0 0 0 1.96 0C13.47 21.33 20 15.25 20 10c0-4.42-3.58-8-8-8zm0 11.25A3.25 3.25 0 1 1 12 6.75a3.25 3.25 0 0 1 0 6.5z'/></svg>")
+               center / contain no-repeat;
 }
-.why__scroll-arrow {
-  width: 22px; height: 50px;
-  background: var(--primary); /* ersetzbar mit SVG */
+.why-lead-text {
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+  letter-spacing: 0.01em;
+}
+.why-emph {
+  color: var(--primary);
+  font-weight: 700;
+}
+/* Frage */
+.why-question {
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 3.6vw, 1.4rem);
+  margin: 18px 0 10px;
+  opacity: 0.95;
+}
+/* Fließtext */
+.why-text {
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 3.4vw, 1.2rem);
+  line-height: 1.6;
+  max-width: 60ch;
+  margin: 0 auto;
+  opacity: 0.9;
+}
 
+@media (min-width: 720px) {
+  .why-lead { gap: 16px; }
+  .why-pin  { width: 30px; height: 40px; }
 }

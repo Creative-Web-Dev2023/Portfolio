@@ -26,7 +26,6 @@ export class HeroComponent {
   }
  setLanguage(lang: 'de' | 'en'): void {
     this.currentLang = lang;
-    console.log('Sprache gewechselt zu:', lang);
     // Hier könntest du später Angular i18n oder ngx-translate einbinden
   }
   // Escape schließt das Menü
