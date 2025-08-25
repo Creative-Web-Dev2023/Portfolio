@@ -1,0 +1,101 @@
+.skills {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(70px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.skills-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.skills-item img{
+  display: block;
+  max-width: 64px;
+  height: auto;
+  margin: 0 auto;        
+}
+.skills-learning {
+  display: grid;
+  gap: 0.75rem;
+}
+.skills-label {
+  color: var(--primary);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.skills-bubble {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: end;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  border-radius: 999px;
+}
+.skills-col {
+  display: grid;
+  place-items: center;
+  gap: 0.3rem;
+  font-size: 0.875rem;
+}
+.skills-col img {
+  width: 32px;
+  height: 32px;
+}
+
+.skills-grid--green img {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(59%) saturate(687%)
+    hue-rotate(110deg) brightness(98%) contrast(92%); 
+}
+.skills-grid .skills-item:nth-child(9){   /* MongoDB */
+  grid-column: 2;      // Positioniere das 9. Element in der 2. Spalte
+}
+.skills-grid .skills-item:nth-child(10){ // Positioniere das 10. Element in der 3. Spalte
+  grid-column: 3;
+}
+.section-title {
+  color: var(--primary);
+  text-align: center;
+  font-family: "Anta", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem); 
+  letter-spacing: 0.02em;
+  margin: 8px 0 24px;
+}
+.skills-learning {
+  text-align: center;
+  margin-top: 2rem;
+
+  .skills-label {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+     font-family:var(--font-title, "Josefin Sans");
+  }
+
+  .skills-text {
+    font-family: "Josefin Sans", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 3.4vw, 1.2rem);
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+}
+
+.section {
+  margin-top: 48px; 
+}

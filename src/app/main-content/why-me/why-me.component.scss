@@ -1,19 +1,19 @@
 /* Grundfarben kommen wie im Hero aus :root – hier nur genutzt */
 .why {
-  background: var(--bg);
+  background: var(--bg); // 
   color: var(--text);
      
 }
 
 .why-wrap {
   max-width: 880px;     
-  margin-inline: auto;
+  margin-inline: auto;//  zentrieren
   text-align: center;
 }
 
 /* Titel */
 .why-title {
-  font-family: "Anta", system-ui, sans-serif;
+  font-family: var(--font-title, "Anta"), system-ui, sans-serif;
   font-weight: 400;
   font-size: clamp(1.8rem, 4.8vw, 2.4rem);
   color: var(--primary);
@@ -45,7 +45,7 @@
                center / contain no-repeat;
 }
 .why-lead-text {
-  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-family: var(--font-title, "Josefin Sans"), system-ui, sans-serif;
   font-size: clamp(1.05rem, 3.8vw, 1.35rem);
   letter-spacing: 0.01em;
 }
@@ -55,7 +55,7 @@
 }
 /* Frage */
 .why-question {
-  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-family: var(--font-title, "Josefin Sans"), system-ui, sans-serif;
   font-weight: 400;
   font-size: clamp(1.1rem, 3.6vw, 1.4rem);
   margin: 18px 0 10px;
