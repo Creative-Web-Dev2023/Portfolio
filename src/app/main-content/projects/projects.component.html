@@ -1,34 +1,187 @@
 <section id="projects" class="section projects">
-  <h2 class="section__title">My Projects</h2>
+  <h2 class="section-title">My Projects</h2>
 
-  <nav class="projects__tabs" aria-label="Projects">
-    <button class="is-active">Project 01</button>
-    <button>Project 02</button>
-    <button>Project 03</button>
-    <button>Project 04</button>
+  <!-- Tabs: einfache Buttons -->
+  <nav class="projects-tabs">
+    <button (click)="active=0" [class.active]="active===0">1. Project</button>
+    <button (click)="active=1" [class.active]="active===1">2. Project</button>
+    <button (click)="active=2" [class.active]="active===2">3. Project</button>
+    <button (click)="active=3" [class.active]="active===3">4. Project</button>
   </nav>
 
-  <article class="project-card">
-    <header class="project-card__head">
-      <h3 class="project-card__title">Project 01</h3>
-      <div class="project-card__meta">
-        <span class="project-card__tech">Angular, Firebase</span>
-        <span class="project-card__dur">2 weeks</span>
+  <!-- ===== Project 1 ===== -->
+  <article class="project-card" *ngIf="active===0" [class.active]="active===0">
+    <header class="project-card-head">
+      <h3 class="project-card-title">1.Project</h3>
+      <div class="project-card-meta">
+        <span class="project-card-tech">Angular, Firebase</span>
+        <span class="project-card-dur">2 weeks</span>
       </div>
     </header>
 
-    <img class="project-card__shot" src="/assets/shots/project-01.jpg" alt="Screenshot Project 01">
+    <img class="project-card-shot"
+         src="/img/my-projects/wizard.png"
+         alt="Screenshot Project 01" />
 
-    <ul class="project-card__points">
-      <li><strong>About the project</strong> – kurzer Text …</li>
-      <li><strong>How I organised my work</strong> – kurzer Text …</li>
-      <li><strong>Group work experience</strong> – kurzer Text …</li>
+    <ul class="project-card-points">
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">About the project</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">How I organised my work</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">Group work experience</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
     </ul>
 
-    <div class="project-card__actions">
-      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live</a>
-      <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Code</a>
+    <div class="project-card-actions">
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
+      <a class="btn btn--ghost"   href="#" target="_blank" rel="noopener">Github</a>
+    </div>
+  </article>
+
+  <!-- ===== Project 2 ===== -->
+  <article class="project-card" *ngIf="active===1" [class.active]="active===1">
+    <header class="project-card-head">
+      <h3 class="project-card-title">2.Project</h3>
+      <div class="project-card-meta">
+        <span class="project-card-tech">Vue, Pinia</span>
+        <span class="project-card-dur">2 weeks</span>
+      </div>
+    </header>
+
+    <img class="project-card-shot"
+         src="/img/my-projects/project-02.png"
+         alt="Screenshot Project 02" />
+
+    <ul class="project-card-points">
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">About the project</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">How I organised my work</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">Group work experience</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="project-card-actions">
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
+      <a class="btn btn--ghost"   href="#" target="_blank" rel="noopener">Github</a>
+    </div>
+  </article>
+
+  <!-- ===== Project 3 ===== -->
+  <article class="project-card" *ngIf="active===2" [class.active]="active===2">
+    <header class="project-card-head">
+      <h3 class="project-card-title">3.Project</h3>
+      <div class="project-card-meta">
+        <span class="project-card-tech">React</span>
+        <span class="project-card-dur">1 week</span>
+      </div>
+    </header>
+
+    <img class="project-card-shot"
+         src="/img/my-projects/project-03.png"
+         alt="Screenshot Project 03" />
+
+    <ul class="project-card-points">
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">About the project</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">How I organised my work</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">Group work experience</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="project-card-actions">
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
+      <a class="btn btn--ghost"   href="#" target="_blank" rel="noopener">Github</a>
+    </div>
+  </article>
+
+  <!-- ===== Project 4 ===== -->
+  <article class="project-card" *ngIf="active===3" [class.active]="active===3">
+    <header class="project-card-head">
+      <h3 class="project-card-title">4.Project</h3>
+      <div class="project-card-meta">
+        <span class="project-card-tech">Svelte</span>
+        <span class="project-card-dur">10 days</span>
+      </div>
+    </header>
+
+    <img class="project-card-shot"
+         src="/img/my-projects/project-04.png"
+         alt="Screenshot Project 04" />
+
+    <ul class="project-card-points">
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">About the project</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">How I organised my work</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">Group work experience</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="project-card-actions">
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
+      <a class="btn btn--ghost"   href="#" target="_blank" rel="noopener">Github</a>
     </div>
   </article>
 </section>
-
