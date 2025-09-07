@@ -1,4 +1,4 @@
-/* Anta Regular */
+
 @font-face {
   font-family: "Anta";
   src: url("/fonts/Anta-Regular.woff2") format("woff2");
@@ -7,7 +7,7 @@
   font-display: swap;
 }
 
-/* Josefin Sans Regular */
+
 @font-face {
   font-family: "Josefin Sans";
   src: url("/fonts/JosefinSans-Regular.woff2") format("woff2");
@@ -16,11 +16,11 @@
   font-display: swap;
 }
 
-/* Roboto Mono – du hast nur die *Italic*-Datei */
+
 @font-face {
   font-family: "Roboto Mono";
   src: url("/fonts/RobotoMono-Italic.woff2") format("woff2");
-  font-weight: 400;   /* oder 500, wenn es eher Medium ist */
-  font-style: italic; /* WICHTIG – Datei ist kursiv */
+  font-weight: 400;   
+  font-style: italic;
   font-display: swap;
 }

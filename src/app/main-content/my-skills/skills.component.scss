@@ -12,9 +12,8 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    margin: 0 auto;
+    margin: 0 auto 32px;
     max-width: clamp(320px, 90vw, 760px);
-    margin-bottom: 32px;
 
     &--green img {
       filter: brightness(0) saturate(100%) invert(73%) sepia(59%) saturate(687%)
@@ -25,6 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       img {
         display: block;
         width: clamp(32px, 7vw, 64px);
@@ -41,11 +41,104 @@
     }
   }
 
+  /* ---------- Lernen-Block ------------------------------------------- */
+  &-learning {
+    max-width: min(100%, 1040px);
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns:
+      minmax(260px, min(60ch, 1fr))
+      minmax(140px, clamp(180px, 20vw, 340px));
+    grid-template-areas:
+      "label label"
+      "text  bubble";
+    column-gap: clamp(12px, 4vw, 40px);
+    row-gap: clamp(10px, 3vw, 20px);
+    align-items: start;
+    justify-items: start;
+    text-align: left;
+
+    .skills-label {
+      grid-area: label;
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: clamp(8px, 2vw, 12px);
+      margin-bottom: clamp(12px, 3vw, 20px);
+      text-align: center;
+      font-family: var(--font-title, "Josefin Sans");
+    }
+
+    .skills-text {
+      grid-area: text;
+      max-width: 60ch;
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-family: var(--font-title, "Josefin Sans");
+      font-weight: 400;
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .skills-bubble {
+      grid-area: bubble;
+      justify-self: end;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: clamp(160px, 22vw, 340px);
+      aspect-ratio: 1 / 0.9;
+      height: auto;
+      padding: 0;
+      border-radius: 999px;
+      position: relative;
+
+      .skills-col {
+        width: 46%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        gap: clamp(3px, 1.2vw, 8px);
+
+        img {
+          width: 78%;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+        }
+
+        span {
+          font-size: clamp(12px, 1.6vw, 18px);
+          line-height: 1.2;
+          text-align: center;
+        }
+      }
+
+      .skills-bubble-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 0;
+      }
+    }
+  }
+
+  /* ---------- Media Queries ------------------------------------------ */
   @media (min-width: 640px) and (max-width: 899.98px) {
     &-grid {
       grid-template-columns: repeat(3, minmax(64px, 1fr));
       max-width: 680px;
       margin-inline: auto;
+
       .skills-item:nth-child(9),
       .skills-item:nth-child(10) {
         grid-column: auto;
@@ -70,71 +163,62 @@
     }
   }
 
-  &-learning {
-    display: grid;
-    grid-template-columns:
-      clamp(150px, 55vw, 214px) /* Text-Spalte schrumpft/ wächst */
-      clamp(96px, 32vw, 128px); /* Bubble-Spalte schrumpft/ wächst */
-    grid-template-areas:
-      "label label"
-      "text  bubble";
-    column-gap: clamp(10px, 4vw, 20px);
-    row-gap: clamp(8px, 2.4vw, 16px);
-    align-items: start;
-    justify-items: start;
-    text-align: left;
+  @media (max-width: 359.98px) {
+    &-learning {
+      grid-template-columns:
+        clamp(150px, 55vw, 214px)
+        clamp(104px, 38vw, 128px);
+      grid-template-areas:
+        "label label"
+        "text  bubble";
+      column-gap: clamp(8px, 4vw, 16px);
+      justify-items: start;
+      text-align: left;
 
-     .skills-label {
-      grid-area: label;
-      color: var(--primary);
-      font-size: 1rem;
-      font-weight: 600;
-      margin-top: clamp(8px, 2vw, 12px);
-      margin-bottom: clamp(12px, 3vw, 20px);
-      text-align: center;
-      font-family: var(--font-title, "Josefin Sans");
-    }
+      .skills-label {
+        justify-self: center;
+        text-align: center;
+        width: 100%;
+      }
 
-    .skills-text {
-      grid-area: text;
-      max-width: clamp(24ch, 45vw, 46ch);
-      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-      font-family: var(--font-title, "Josefin Sans");
-      font-weight: 400;
-      line-height: 1.6;
-      margin: 0;
-      opacity: 0.9;
-    }
-    .skills-bubble {
-      grid-area: bubble;
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 128px;
-      height: 114px;
-      padding: 0;
-      border-radius: 999px;
-      position: relative;
+      .skills-text {
+        max-width: clamp(150px, 55vw, 214px);
+        font-size: clamp(0.95rem, 3.8vw, 1rem);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .skills-bubble {
+        justify-self: end;
+        width: clamp(104px, 38vw, 128px);
+        height: clamp(76px, 28vw, 114px);
+        padding: 0;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(6px, 2.8vw, 10px);
+        position: relative;
+      }
 
       .skills-col {
-        width: 60px;
-        height: 80px;
+        width: clamp(30px, 11vw, 36px);
+        height: clamp(44px, 15vw, 54px);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: relative;
+        gap: clamp(3px, 1.6vw, 5px);
         z-index: 1;
 
         img {
-          width: 50px;
-          height: 50px;
+          width: clamp(22px, 8vw, 32px);
+          height: clamp(22px, 8vw, 32px);
           display: block;
-          margin: 0 auto;
         }
+
         span {
-          font-size: 18px;
+          font-size: clamp(12px, 3.4vw, 14px);
           line-height: 1.2;
           text-align: center;
         }
@@ -145,96 +229,43 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        z-index: 0;
-        pointer-events: none;
         object-fit: contain;
+        pointer-events: none;
+        z-index: 0;
       }
     }
   }
 
-  @media (max-width: 359.98px) {
-    .skills-learning {
-      grid-template-columns:
-        clamp(150px, 55vw, 214px)
-        clamp(104px, 38vw, 128px);
-      grid-template-areas:
-        "label label"
-        "text  bubble";
-      column-gap: clamp(8px, 4vw, 16px);
-      justify-items: start;
-      text-align: left;
-    }
-
-    .skills-learning .skills-label {
-      justify-self: center;
-      text-align: center;
-      width: 100%;
-    }
-
-    .skills-learning .skills-text {
-      max-width: clamp(150px, 55vw, 214px);
-      font-size: clamp(0.95rem, 3.8vw, 1rem);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .skills-learning .skills-bubble {
-      justify-self: end;
-      width: clamp(104px, 38vw, 128px);
-      height: clamp(76px, 28vw, 114px);
-      padding: 0;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(6px, 2.8vw, 10px);
-      position: relative;
-    }
-
-    .skills-learning .skills-col {
-      width: clamp(30px, 11vw, 36px);
-      height: clamp(44px, 15vw, 54px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: clamp(3px, 1.6vw, 5px);
-      z-index: 1;
-    }
-
-    .skills-learning .skills-col img {
-      width: clamp(22px, 8vw, 32px);
-      height: clamp(22px, 8vw, 32px);
-      display: block;
-    }
-
-    .skills-learning .skills-col span {
-      font-size: clamp(12px, 3.4vw, 14px);
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    .skills-learning .skills-bubble-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      pointer-events: none;
-      z-index: 0;
+  @media (max-width: 640px) {
+    &-learning {
+      .skills-label {
+        justify-self: center !important;
+        text-align: center !important;
+        width: 100%;
+        display: block;
+      }
     }
   }
 
-  @media (max-width: 640px) {
-    .skills-learning .skills-label {
-      justify-self: center !important;
-      text-align: center !important;
-      width: 100%;
-      display: block;
+  @media (min-width: 640px) {
+    &-learning {
+      grid-template-columns:
+        minmax(320px, min(60ch, 1fr))
+        minmax(200px, clamp(220px, 20vw, 380px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    &-learning {
+      align-items: center;
+      grid-template-columns:
+        minmax(420px, min(60ch, 1.1fr))
+        minmax(240px, clamp(260px, 22vw, 420px));
     }
   }
 }
 
+/* außerhalb des Blocks */
 .section-title {
   color: var(--primary);
   text-align: center;
@@ -245,9 +276,6 @@
   margin: 8px 0 24px;
 }
 
-.section {
-  margin-top: 48px;
-}
 .section {
   margin-top: 48px;
 }

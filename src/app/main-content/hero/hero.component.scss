@@ -1,151 +1,329 @@
 /* === Hero === */
-.hero {min-height: 55vh;background: var(--bg);
-  color: var(--text);  position: relative;} 
+.hero {
+  --logo-size: clamp(56px, 8vw, 100px);
+  min-height: 55vh;
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
 
-/* Top-Bar */
-.hero-bar {display: flex;align-items: center;justify-content: space-between;
-  padding: 16px 20px; position: relative; z-index: 2000;}
+  /* Top-Bar */
+  &-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    position: relative;
+    z-index: 2000;
+  }
 
-/* Logo-Block */
-.hero-logo-block {position: absolute;top: 24px;left: 24px;
-  width: 58px;display: flex;flex-direction: column;
-  align-items: center;gap: 2px;color: var(--primary);
-  z-index: 10;}
+  /* Logo-Block (fluid) */
+  &-logo-block {
+    position: absolute;
+    top: clamp(16px, 3vw, 32px);
+    left: clamp(16px, 3vw, 32px);
+    width: var(--logo-size);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2px, 0.8vw, 6px);
+    color: var(--primary);
+    z-index: 10;
+  }
 
-.hero-logo {position: relative;width: 58px;height: 72px;top: 27px;}
-.logo-s {position: absolute;left: 0;top: 0;width: 58px;height: 38px;
-  display: block;}
-.brace {position: absolute;top: 12px;width: 10px;height: 19px;
-  pointer-events: none;}
-.brace--left {left: 9px;}
+  &-logo {
+    position: relative;
+    width: var(--logo-size);
+    height: calc(var(--logo-size) * 1.24);
+    top: clamp(16px, 3vw, 30px);
 
-.brace--right {right: 10px;}
-.hero-logo-name {
-  font-family: "Anta", system-ui, sans-serif;
-  font-weight: 400;font-size: 14px;line-height: 1.2;color: var(--text);
+    .logo-s {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: calc(var(--logo-size) * 0.66);
+      display: block;
+    }
+
+    .brace {
+      position: absolute;
+      top: calc(var(--logo-size) * 0.21);
+      width: calc(var(--logo-size) * 0.18);
+      height: calc(var(--logo-size) * 0.33);
+      pointer-events: none;
+
+      &--left {
+        left: calc(var(--logo-size) * 0.16);
+      }
+      &--right {
+        right: calc(var(--logo-size) * 0.17);
+      }
+    }
+  }
+
+  &-logo-name {
+    font-family: "Anta", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: clamp(12px, 1.4vw, 16px);
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  &-logo-dev {
+    font-family: "Josefin Sans", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: clamp(12px, 1.4vw, 16px);
+    line-height: 1.2;
+    color: var(--primary);
+  }
+
+  /* Visual */
+  &-visual {
+    display: grid;
+    place-items: center;
+    width: min(90vw, 360px);
+    margin: 28px auto 12px;
+    position: relative;
+    z-index: 0;
+
+    .visual {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* Typo */
+  &-title {
+    font-family: var(--font-display, "Anta", sans-serif);
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 120%;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-role {
+    font-family: var(--font-sans, "Josefin Sans", sans-serif);
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 120%;
+    font-weight: 400;
+    opacity: 0.95;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Scroll-Button */
+  .scroll {
+    position: static;
+    margin: 32px auto 0;
+    display: block;
+    z-index: 1;
+    transform: none;
+    left: auto;
+    bottom: auto;
+  }
+
+  /* --- Menü offen Modifier --- */
+  &.menu-open {
+    & .hero-title,
+    & .hero-role,
+    & .scroll {
+      z-index: 1900;
+    }
+
+    & .hero-title,
+    & .hero-role {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1550;
+    }
+
+    & .hero-title {
+      top: 64vh;
+    }
+    & .hero-role {
+      top: 70vh;
+    }
+
+    & .scroll {
+      position: fixed;
+      left: 50%;
+      bottom: 12.5rem;
+      transform: translateX(-50%);
+      z-index: 1550;
+    }
+  }
+
+  &:not(.menu-open) {
+    .scroll {
+      position: absolute;
+      left: 50%;
+      top: 86%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      z-index: 1;
+    }
+  }
+
+  /* === Desktop === */
+  @media (min-width: 900px) {
+    padding: 40px 64px 80px;
+    min-height: 72vh;
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    align-items: center;
+    gap: 72px;
+    max-width: 1214px;
+    margin-inline: auto;
+    position: relative;
+
+    --logo-size: clamp(64px, 6vw, 120px);
+
+    &-logo-block {
+      top: clamp(100px, 10vh, 160px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &-visual {
+      width: clamp(420px, 36vw, 480px);
+      margin: 0;
+    }
+  }
 }
-.hero-logo-dev {
-  font-family: "Josefin Sans", system-ui, sans-serif;
-  font-weight: 300;font-size: 14px;line-height: 1.2;color: var(--primary);}
-
-/* Visual */
-.hero-visual {
-  display: grid; place-items: center; width: min(90vw, 360px);
-   margin: 28px auto 12px; position: relative; z-index: 0;}
-
-.hero-visual .visual { width: 100%; height: auto; display: block;}
-
-/* Typo */
-.hero-title {
-  font-family: var(--font-display, "Anta", sans-serif);
-  font-size: clamp(2rem, 8vw, 3rem);line-height: 120%;font-weight: 400;
-  text-align: center;margin-top: 8px;position: relative;
-  z-index: 1;}
-
-.hero-role {
-  font-family: var(--font-sans, "Josefin Sans", sans-serif);
-  font-size: 1.5rem;text-align: center;line-height: 120%;
-  font-weight: 400;opacity: 0.95;margin-top: 6px;
-  position: relative;z-index: 1;}
-
-/* Scroll-Button  */
-.scroll {position: static;margin: 32px auto 0;display: block;
-  z-index: 1; transform: none; left: auto; bottom: auto;}
 
 /* Burger */
 .burger {
-  width: 40px; height: 40px;display: grid;
-  place-items: center;border: none;background: transparent;
-  cursor: pointer;z-index: 2100; position: absolute;
-  top: 60px;right: 24px;padding: 0;}
-.burger img { width: 32px; height: 32px; display: block;}
-
-/* === Mobile-Overlay ===*/
-.mobile-nav {position: fixed;inset: 0;
-  z-index: 1500;background: #1e262b;
-  overflow: hidden;display: grid;
-  place-items: center;padding: 96px 16px 24px;}
-
-/* Bubble-Box oben im Overlay */
-.menu-box {position: relative; width: clamp(280px, 86vw, 520px);
-  aspect-ratio: 590 / 651;background: none;
-  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.25));
-  display: grid;place-items: center;z-index: 1600;
-  bottom: 12.25rem;overflow: visible;}
-
-.menu-box::before {
-  content: ""; position: absolute; inset: 0;
-  background: url("/img/hero-section/menu-bubble.svg") center / contain
-    no-repeat;
-  transform: scaleX(-1); z-index: 0; pointer-events: none;}
-
-.menu-list {position: relative; z-index: 1;list-style: none;
-  margin: 0;padding: 0;display: flex;
-  flex-direction: column;align-items: center;gap: 40px;
-  text-align: center;}
-
-/* Menülinks */
-.menu-list a {color: #0f1b20;text-decoration: none;
-  font-family: "Anta", system-ui, sans-serif;
-  font-size: 2rem;letter-spacing: 0.04em;
-  transition: transform 0.2s, opacity 0.2s;}
-.menu-list a:hover {transform: scale(1.07);opacity: 0.85;}
-
-/* Sprachschalter */
-.language-switch {display: flex;gap: 16px;
-  align-items: center;justify-content: center;margin-top: 8px;}
-
-/* Buttons wie Text darstellen */
-.language-switch .lang {
-  background: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
   border: none;
-  padding: 6px 10px;
-  font: inherit;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #1f2937; /* inaktiv */
+  background: transparent;
   cursor: pointer;
-  border-radius: 999px;
+  z-index: 2100;
+  position: absolute;
+  top: 60px;
+  right: 24px;
+  padding: 0;
 
-  &:focus-visible {outline: 2px solid #4a90e2;
-    outline-offset: 2px;border-radius: 6px;}
+  img {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
 }
-/* aktive Sprache: weiß + kleine „Pille“ */
-.language-switch .lang.active {
-  color: #fff;background: rgba(255, 255, 255, 0.25);}
 
-/* Wenn das Menü offen ist, sollen Titel/Rolle/Pfeil unter der Menübox liegen (verdeckt) */
-.hero.menu-open .hero-title,
-.hero.menu-open .hero-role,
-.hero.menu-open .scroll {z-index: 1900;}
+/* === Mobile-Overlay === */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: #1e262b;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 96px 16px 24px;
 
-/* Wenn Menü offen: Titel/Rolle/Scroll sichtbar UNTER der Bubble platzieren */
-.hero.menu-open .hero-title,
-.hero.menu-open .hero-role {
-  position: fixed;left: 50%;
-  transform: translateX(-50%); z-index: 1550;}
+  /* Bubble-Box oben im Overlay */
+  .menu-box {
+    position: relative;
+    width: clamp(280px, 86vw, 520px);
+    aspect-ratio: 590 / 651;
+    background: none;
+    filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.25));
+    display: grid;
+    place-items: center;
+    z-index: 1600;
+    bottom: 12.25rem;
+    overflow: visible;
 
-/* Positionen unterhalb der Bubble (werte gern feinjustieren) */
-.hero.menu-open .hero-title {top: 64vh;}
-.hero.menu-open .hero-role { top: 70vh;}
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("/img/hero-section/menu-bubble.svg") center / contain
+        no-repeat;
+      transform: scaleX(-1);
+      z-index: 0;
+      pointer-events: none;
+    }
+  }
 
-/* Pfeil bleibt am unteren Rand sichtbar */
-.hero.menu-open .scroll {position: fixed;left: 50%;
-  bottom: 12.5rem;transform: translateX(-50%);z-index: 1550;}
-.hero:not(.menu-open) .scroll {position: absolute;left: 50%;
-  top: 86%;transform: translate(-50%, -50%); 
-  display: inline-block;z-index: 1;}
+  .menu-list {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
 
-/* === Desktop */
+    a {
+      color: #0f1b20;
+      text-decoration: none;
+      font-family: "Anta", system-ui, sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s, opacity 0.2s;
+
+      &:hover {
+        transform: scale(1.07);
+        opacity: 0.85;
+      }
+    }
+  }
+
+  /* Sprachschalter */
+  .language-switch {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+
+    .lang {
+      background: none;
+      border: none;
+      padding: 6px 10px;
+      font: inherit;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #1f2937; /* inaktiv */
+      cursor: pointer;
+      border-radius: 999px;
+
+      &:focus-visible {
+        outline: 2px solid #4a90e2;
+        outline-offset: 2px;
+        border-radius: 6px;
+      }
+
+      &.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+}
+
+/* Desktop: Burger & Overlay ausblenden */
 @media (min-width: 900px) {
   .burger,
-  .mobile-nav {display: none !important;}
-
-  .hero {padding: 40px 64px 80px;min-height: 72vh;display: grid;
-    grid-template-columns: 520px 1fr;align-items: center;gap: 72px;
-    max-width: 1214px;margin-inline: auto;position: relative;}
-
-  .hero-logo-block {position: absolute;top: 121px;left: 50%;transform: translateX(-50%);
+  .mobile-nav {
+    display: none !important;
   }
-  .hero-visual {width: 480px;margin: 0;}
+}
+
+.hero .scroll {
+  margin-top: 48px; 
+  margin-bottom: 0;
 }
