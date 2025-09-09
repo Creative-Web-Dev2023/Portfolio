@@ -15,9 +15,21 @@
     margin: 0 auto 32px;
     max-width: clamp(320px, 90vw, 760px);
 
+    &--green {
+      perspective: 600px;
+    }
+
     &--green img {
       filter: brightness(0) saturate(100%) invert(73%) sepia(59%) saturate(687%)
         hue-rotate(110deg) brightness(98%) contrast(92%);
+      transition: transform 0.5s cubic-bezier(0.42, 1.6, 0.38, 1);
+      backface-visibility: hidden;
+      cursor: pointer;
+    }
+
+    &--green img:hover {
+      animation: coinFlip 1.0s cubic-bezier(0.42, 1.6, 0.38, 1);
+      transform: scale(1.08);
     }
 
     .skills-item {
@@ -278,4 +290,16 @@
 
 .section {
   margin-top: 48px;
+}
+
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg) scale(1.08);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1.08);
+  }
 }

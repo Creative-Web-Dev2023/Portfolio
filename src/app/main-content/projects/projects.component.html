@@ -1,6 +1,5 @@
 <section id="projects"class="projects"[attr.data-active]="active"[style.--i]="active">
   <h2 class="section-title">My Projects</h2>
-
   <!-- Tabs: einfache Buttons -->
   <nav class="projects-tabs">
     <button (click)="active=0" [class.active]="active===0">1. Project</button>
@@ -8,7 +7,6 @@
     <button (click)="active=2" [class.active]="active===2">3. Project</button>
     <button (click)="active=3" [class.active]="active===3">4. Project</button>
   </nav>
-
   <!-- ===== Project 1 ===== -->
   <article class="project-card" *ngIf="active===0" [class.active]="active===0">
     <header class="project-card-head">
@@ -24,8 +22,8 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">About the project</p>
-          <p class="project-point-text">DA-Bubble is a real-time chat app built with Angular and Firebase. It supports
-            public channels, private messages, and secure authentication.</p>
+          <p class="project-point-text">DA-Bubble is a real-time chat app built with Angular and Firebase. 
+            It supports public channels, private messages, and secure authentication.</p>
         </div>
       </li>
       <li>
@@ -43,13 +41,11 @@
         </div>
       </li>
     </ul>
-
     <div class="project-card-actions">
       <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
       <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Github</a>
     </div>
   </article>
-
   <!-- ===== Project 2 ===== -->
   <article class="project-card" *ngIf="active===1" [class.active]="active===1">
     <header class="project-card-head">
@@ -72,7 +68,8 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">How I organised my work</p>
-          <p class="project-point-text">I worked independently, planning and implementing each feature step by step to ensure a structured workflow.</p>
+          <p class="project-point-text">I worked independently, planning and implementing each feature 
+            step by step to ensure a structured workflow.</p>
         </div>
       </li>
     </ul>
@@ -82,7 +79,6 @@
         rel="noopener">Github</a>
     </div>
   </article>
-
   <!-- ===== Project 3 ===== -->
   <article class="project-card" *ngIf="active===2" [class.active]="active===2">
     <header class="project-card-head">
@@ -97,14 +93,16 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">About the project</p>
-            <p class="project-point-text">Kanban-style task manager built with Angular and Firebase. Supports drag & drop, user assignment, categories, and custom authentication.</p>
+            <p class="project-point-text">Kanban-style task manager built with Angular and Firebase.
+               Supports drag & drop, user assignment, categories, and custom authentication.</p>
         </div>
       </li>
       <li>
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">How I organised my work</p>
-            <p class="project-point-text">Tasks were split using Kanban boards and regular meetings helped us adapt quickly and stay organized.</p>
+            <p class="project-point-text">Tasks were split using Kanban boards and regular meetings helped us
+               adapt quickly and stay organized.</p>
         </div>
       </li>
       <li>
@@ -115,14 +113,12 @@
         </div>
       </li>
     </ul>
-
     <div class="project-card-actions">
       <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
       <a class="btn btn--ghost" href="https://github.com/Creative-Web-Dev2023/Join" target="_blank"
         rel="noopener">Github</a>
     </div>
   </article>
-
   <!-- ===== Project 4 ===== -->
   <article class="project-card" *ngIf="active===3" [class.active]="active===3">
     <header class="project-card-head">
@@ -137,16 +133,16 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">About the project</p>
-          <p class="project-point-text">Interactive Pokédex app that loads Pokémon data from a public API. Provides
-            detailed information about Pokémon, including stats, abilities, and evolution stages.</p>
+          <p class="project-point-text">Interactive Pokédex app that loads Pokémon data from a public API. 
+            Provides detailed information about Pokémon, including stats, abilities, and evolution stages.</p>
         </div>
       </li>
       <li>
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">How I organised my work</p>
-          <p class="project-point-text">Work was split into planning, development, and testing. Agile methods ensured
-            flexibility, and continuous testing helped catch issues early.</p>
+          <p class="project-point-text">Work was split into planning, development, and testing.
+             Agile methods ensured  flexibility, and continuous testing helped catch issues early.</p>
         </div>
       </li>
 

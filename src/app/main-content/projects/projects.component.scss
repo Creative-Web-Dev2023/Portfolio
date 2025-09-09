@@ -3,7 +3,6 @@ $panel: var(--surface-2, #2d383f);
 $ring: rgba(250, 250, 250, 0.1);
 $shadow: 0 22px 40px rgba(0, 0, 0, 0.28);
 $primary: var(--primary, #58e0b8);
-
 /* ---------- Container ---------- */
 .projects {
   position: relative;
@@ -14,7 +13,6 @@ $primary: var(--primary, #58e0b8);
   --cap-h: 56px; /* Höhe der Kappe */
   --cap-top: -22px; /* vertikale Justierung */
   --cap-shift: -12px; /* horizontale Feinkorrektur */
-
   /* GROSSE PANELFLÄCHE (0 30 30 30) */
   &::before {
     content: "";
@@ -31,7 +29,6 @@ $primary: var(--primary, #58e0b8);
     pointer-events: none;
   }
 }
-
 /* ---------- Tabs ---------- */
 .projects-tabs {
   position: relative;
@@ -40,7 +37,6 @@ $primary: var(--primary, #58e0b8);
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
-
 .projects-tabs button {
   flex: 0 0 var(--tab-w);
   background: none;
@@ -65,7 +61,6 @@ $primary: var(--primary, #58e0b8);
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   opacity: 1;
 }
-
 /* ANDOCK-KAPPE unter aktivem Tab (fährt mit --i) */
 .projects-tabs::after {
   position: absolute;
@@ -81,7 +76,6 @@ $primary: var(--primary, #58e0b8);
   z-index: -1;
   pointer-events: none;
 }
-
 /* ---------- Card & Bild ---------- */
 .project-card {
   position: relative;
@@ -102,7 +96,6 @@ $primary: var(--primary, #58e0b8);
   transform: scale(0.7) translateY(40px);
   animation: cardShotIn 0.7s cubic-bezier(0.42, 1.6, 0.38, 1) 0.1s forwards;
   filter: brightness(0.98) saturate(1.08) contrast(1.08);
-
   &:hover {
     transform: scale(1.18) rotate(1.5deg);
     box-shadow: none;
@@ -110,7 +103,6 @@ $primary: var(--primary, #58e0b8);
       drop-shadow(0 0 0 #58e0b8) drop-shadow(0 0 24px #58e0b8);
   }
 }
-
 @keyframes cardShotIn {
   0% {
     opacity: 0;
@@ -125,7 +117,6 @@ $primary: var(--primary, #58e0b8);
     transform: scale(1) translateY(0);
   }
 }
-
 /* ---------- Section Title ---------- */
 .section-title {
   color: var(--primary, #58e0b8);
@@ -135,14 +126,12 @@ $primary: var(--primary, #58e0b8);
 .project-card-title {
   color: var(--primary, #58e0b8);
 }
-
 /* ---------- Punkte in der Projektkarte ---------- */
 .project-card-points {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .project-card-points li {
   display: flex;
   flex-direction: row;
@@ -150,7 +139,6 @@ $primary: var(--primary, #58e0b8);
   gap: 10px;
   text-align: left;
 }
-
 .project-point-icon {
   width: 22px;
   height: 22px;
@@ -158,14 +146,12 @@ $primary: var(--primary, #58e0b8);
   display: inline-block;
   flex-shrink: 0;
 }
-
 .project-card-points li > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
 }
-
 .project-card-points li p.project-point-title {
   color: var(--primary, #58e0b8);
   text-align: left;
@@ -177,7 +163,6 @@ $primary: var(--primary, #58e0b8);
   display: block;
   line-height: 1.25;
 }
-
 .project-card-points li p.project-point-text {
   color: #fff;
   text-align: left;
@@ -189,7 +174,6 @@ $primary: var(--primary, #58e0b8);
   display: block;
   line-height: 1.6;
 }
-
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -210,19 +194,16 @@ $primary: var(--primary, #58e0b8);
   box-shadow: none;
   transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
-
 .btn--primary {
   background: var(--primary, #58e0b8);
   color: #232b31;
   border: 1.5px solid var(--primary, #58e0b8);
 }
-
 .btn--ghost {
   background: transparent;
   color: var(--primary, #58e0b8);
   border: 1.5px solid var(--primary, #58e0b8);
 }
-
 .btn:hover,
 .btn:focus {
   background: #43c9a6;
@@ -230,7 +211,6 @@ $primary: var(--primary, #58e0b8);
   border-color: #43c9a6;
   text-decoration: none;
 }
-
 .project-card-actions {
   display: flex;
   gap: 0.75rem;
@@ -239,11 +219,9 @@ $primary: var(--primary, #58e0b8);
   margin-top: 18px;
   text-align: center;
 }
-
 .project-card-head {
   margin-bottom: 22px;
 }
-
 .project-card-tech {
   font-family: "Josefin Sans", system-ui, sans-serif;
   font-size: 1rem;
@@ -256,7 +234,6 @@ $primary: var(--primary, #58e0b8);
   opacity: 1;
   background: none;
 }
-
 @media (max-width: 600px) {
   .projects-tabs {
     --tab-w: 48%;
@@ -275,7 +252,6 @@ $primary: var(--primary, #58e0b8);
     height: 40px;
   }
 }
-
 @media (max-width: 400px) {
   .projects-tabs {
     --tab-w: 100%;
