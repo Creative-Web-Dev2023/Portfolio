@@ -38,6 +38,7 @@ $primary: var(--primary, #58e0b8);
   display: flex;
   gap: var(--gap);
   margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .projects-tabs button {
@@ -104,10 +105,9 @@ $primary: var(--primary, #58e0b8);
 
   &:hover {
     transform: scale(1.18) rotate(1.5deg);
-  box-shadow: none; 
-  filter: brightness(1.13) saturate(1.18) contrast(1.18)
-          drop-shadow(0 0 0 #58e0b8)
-          drop-shadow(0 0 24px #58e0b8);
+    box-shadow: none;
+    filter: brightness(1.13) saturate(1.18) contrast(1.18)
+      drop-shadow(0 0 0 #58e0b8) drop-shadow(0 0 24px #58e0b8);
   }
 }
 
@@ -255,4 +255,40 @@ $primary: var(--primary, #58e0b8);
   padding: 0;
   opacity: 1;
   background: none;
+}
+
+@media (max-width: 600px) {
+  .projects-tabs {
+    --tab-w: 48%;
+    gap: 10px;
+  }
+  .projects-tabs button {
+    flex-basis: var(--tab-w);
+    font-size: 1rem;
+    min-width: 120px;
+  }
+  .btn {
+    width: 100%;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 0 10px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .projects-tabs {
+    --tab-w: 100%;
+    gap: 8px;
+  }
+  .projects-tabs button {
+    flex-basis: var(--tab-w);
+    min-width: 0;
+  }
+  .btn {
+    width: 100%;
+    font-size: 0.98rem;
+    padding: 0 6px;
+    height: 38px;
+  }
 }
