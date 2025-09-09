@@ -1,0 +1,95 @@
+.contact-section {
+  background: var(--surface, #2d383f);
+  border-radius: 22px;
+  padding: 32px 24px;
+  max-width: 520px;
+  margin: 48px auto;
+  box-shadow: 0 2px 16px 0 rgba(40, 60, 60, 0.1);
+  font-family: "Josefin Sans", system-ui, sans-serif;
+}
+.contact-title {
+  color: var(--primary, #58e0b8);
+  font-family: "Anta", system-ui, sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.contact-text {
+  color: var(--text, #f8f5ec);
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-size: 1.08rem;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-form input,
+.contact-form textarea {
+  background: #232b31;
+  color: #f8f5ec;
+  border: 1.5px solid var(--primary, #58e0b8);
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #43c9a6;
+}
+.contact-form button {
+  background: var(--primary, #58e0b8);
+  color: #232b31;
+  border: none;
+  border-radius: 18px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.contact-form button:hover {
+  background: #43c9a6;
+  color: #232b31;
+}
+.contact-form .privacy-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.98rem;
+  color: var(--text, #f8f5ec);
+  flex-wrap: nowrap;
+  width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.contact-form .privacy-checkbox {
+  accent-color: var(--primary, #58e0b8);
+  width: 18px;
+  height: 18px;
+}
+.contact-form .privacy-link {
+  color: var(--primary, #58e0b8);
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  font-weight: 500;
+  transition: color 0.18s;
+  white-space: nowrap;
+}
+.contact-form .privacy-link:hover {
+  color: #43c9a6;
+}
+@media (max-width: 500px) {
+  .contact-form .privacy-label {
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: normal;
+    gap: 4px;
+  }
+}

@@ -1,1 +1,25 @@
-<p>contact works!</p>
+<section class="contact-section">
+    <h2 class="contact-title">Contact Me</h2>
+    <p class="contact-text">Tel: 0151/43223440</p>
+    <p class="contact-text">Email: stroeblgabriela@gmail.com</p>
+    <p class="contact-text">If you have any questions or inquiries, feel free to reach out!</p>
+
+    <form class="contact-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label class="privacy-label">
+            <input type="checkbox" name="privacy" required class="privacy-checkbox">
+            I've read the <a href="/privacy-policy" target="_blank" class="privacy-link">privacy policy</a> and agree to
+            the processing of my data as outlined
+        </label>
+
+        <button type="submit">Send</button>
+    </form>
+</section>
