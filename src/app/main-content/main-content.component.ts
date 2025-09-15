@@ -7,19 +7,20 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ReferencesComponent } from './references/references.component';
 import { ContactComponent } from './contact/contact.component';
 
+
 @Component({
   selector: 'app-main-content',
   standalone: true,
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.scss'],
   imports: [
-    CommonModule,
-    HeroComponent,
-    WhyMeComponent,
-    SkillsComponent,
-    ProjectsComponent,
-    ReferencesComponent,
-    ContactComponent,
-  ], // (hier später deine Sektionen rein)
+CommonModule,
+HeroComponent,
+WhyMeComponent,
+SkillsComponent,
+ProjectsComponent,
+ReferencesComponent,
+ContactComponent,
+  ], 
 })
 export class MainContentComponent {}
