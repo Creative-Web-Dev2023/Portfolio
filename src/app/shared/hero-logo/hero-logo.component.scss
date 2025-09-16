@@ -1,0 +1,56 @@
+/* Logo-Container */
+.hero-logo-block {
+  position: relative;
+  width: 58px;
+  /* Höhe des ganzen Blocks inkl. Textzeilen darunter */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--primary); /* <- S wird grün via currentColor */
+}
+
+/* Fläche 58x38 zum Stapeln von S + Klammern */
+.hero-logo {
+  position: relative;
+  width: 58px;
+  height: 72px;
+  top: 27px;
+}
+
+/* S: exakt 48x30 wie in Figma – der <g>-Transform erledigt den Rest */
+.logo-s {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 58px;   /* ViewBox bleibt 58x38 */
+  height: 38px;
+  display: block;
+}
+
+/* Klammern positionieren (Figma: 10x19 @ y=9, x=6 bzw. 36) */
+.brace {
+  position: absolute;
+  top: 12px;
+  width: 10px;
+  height: 19px;
+  pointer-events: none;
+}
+.brace--left  { left: 9px; }
+.brace--right { right: 10px; }
+
+/* Beschriftung darunter – Figma-Typo */
+.hero-logo-name {
+  font-family: 'Anta', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text); /* creme-weiß */
+}
+.hero-logo-dev {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--primary); /* grün wie im Mock */
+}

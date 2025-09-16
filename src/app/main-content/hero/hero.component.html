@@ -2,25 +2,7 @@
   <section class="hero">
   <!-- Top-Bar -->
   <header class="hero-bar">
-    <div class="hero-logo-block">
-      <div class="hero-logo">
-        <img class="brace brace--left" src="/icons/brace-left.svg" alt="" aria-hidden="true" />
-        <svg class="logo-s" viewBox="0 0 58 38" aria-hidden="true">
-          <g transform="translate(2,5) scale(1,0.88235294)">
-            <path d="M33.1745 36H40.6913L51 19.3285L40.6913 2H33.1745L19.2148 36H12.3423L3 19.3285L12.3423 2H19.2148"
-              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-          </g>
-        </svg>
-        <img class="brace brace--right" src="/icons/brace-right.svg" alt="" aria-hidden="true" />
-      </div>
-      <div class="hero-logo-name">G.Ströbl</div>
-      <div class="hero-logo-dev">developer</div>
-    </div>
-
-    <!-- Burger
-    <button class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Menü umschalten">
-      <img [src]="menuOpen ? '/icons/burger-menu/close.svg' : '/icons/burger-menu/default.svg'" alt="Menü" width="32" height="32" />
-    </button>-->
+  <app-hero-logo [name]="'G.Ströbl'" [subtitle]="'developer'"></app-hero-logo>
   </header> 
 
   <!-- Portrait + Shape -->

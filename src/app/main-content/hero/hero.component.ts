@@ -1,17 +1,17 @@
 import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { HeroLogoComponent } from '../../shared/hero-logo/hero-logo.component';
 
 @Component({ 
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [HeroLogoComponent],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent {
   // Steuert, ob das Menü geöffnet ist
   menuOpen: boolean = false;
-  currentLang: 'de' | 'en' = 'de'; // standard auf Deutsch
+  currentLang: 'de' | 'en' = 'de';
 
   // Öffnet/schließt das Menü
   toggleMenu(): void {
