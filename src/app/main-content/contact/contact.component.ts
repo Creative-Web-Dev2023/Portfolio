@@ -9,4 +9,8 @@ import { FooterComponent } from '../../shared/footer/footer.component';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {}
+export class ContactComponent {
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}

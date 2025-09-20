@@ -54,6 +54,13 @@ export const routes: Routes = [
         (m) => m.PrivacyPolicyComponent
       ),
   },
-
+  // Legal Notice
+  {
+    path: 'legal-notice',
+    loadComponent: () =>
+      import('./pages/legal-notice/legal-notice.component').then(
+        (m) => m.LegalNoticeComponent
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];
