@@ -119,9 +119,15 @@ $primary: var(--primary, #58e0b8);
 }
 /* ---------- Section Title ---------- */
 .section-title {
-  color: var(--primary, #58e0b8);
+  color: var(--primary);
   text-align: center;
-  margin: 48px 0 56px;
+  font-family: "Anta", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
+  letter-spacing: 0.02em;
+  margin: 8px 0 2.5rem;
+  position: relative;
+  bottom: 10px;
 }
 .project-card-title {
   color: var(--primary, #58e0b8);

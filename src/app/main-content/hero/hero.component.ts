@@ -1,12 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { HeroLogoComponent } from '../../shared/hero-logo/hero-logo.component';
 
+
 @Component({ 
-  selector: 'app-hero',
-  standalone: true,
-  imports: [HeroLogoComponent],
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss'],
+  selector: 'app-hero',  // Selektor für die Komponente
+  standalone: true,  // Diese Komponente ist eigenständig
+  imports: [HeroLogoComponent],  // Importiere die HeroLogoComponent
+  templateUrl: './hero.component.html', // Pfad zur HTML-Datei
+  styleUrls: ['./hero.component.scss'], // Pfad zur SCSS-Datei
 })
 export class HeroComponent {
   // Steuert, ob das Menü geöffnet ist
@@ -26,7 +27,7 @@ export class HeroComponent {
   }
  setLanguage(lang: 'de' | 'en'): void {
     this.currentLang = lang;
-    // Hier könntest du später Angular i18n oder ngx-translate einbinden
+   
   }
   // Escape schließt das Menü
   @HostListener('document:keydown.escape')
