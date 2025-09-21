@@ -1,4 +1,4 @@
-<section id="projects"class="projects"[attr.data-active]="active"[style.--i]="active">
+<section id="projects" class="projects" [attr.data-active]="active" [style.--i]="active">
   <h2 class="section-title">My Projects</h2>
   <!-- Tabs: einfache Buttons -->
   <nav class="projects-tabs">
@@ -7,47 +7,8 @@
     <button (click)="active=2" [class.active]="active===2">3. Project</button>
     <button (click)="active=3" [class.active]="active===3">4. Project</button>
   </nav>
-  <!-- ===== Project 1 ===== -->
+  <!-- ===== Project 1 (Myrddin's Quest) ===== -->
   <article class="project-card" *ngIf="active===0" [class.active]="active===0">
-    <header class="project-card-head">
-      <h3 class="project-card-title">Da Bubble</h3>
-      <div class="project-card-meta">
-        <span class="project-card-tech">Angular | TypeScript | JavaScript | Firebase| Scss</span>
-      </div>
-    </header>
-    <div style="height: 18px;"></div>
-    <img class="project-card-shot" src="/img/my-projects/da-bubble.png" alt="Screenshot Project 01" />
-    <ul class="project-card-points">
-      <li>
-        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
-        <div>
-          <p class="project-point-title">About the project</p>
-          <p class="project-point-text">DA-Bubble is a real-time chat app built with Angular and Firebase. 
-            It supports public channels, private messages, and secure authentication.</p>
-        </div>
-      </li>
-      <li>
-        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
-        <div>
-          <p class="project-point-title">How I organised my work</p>
-          <p class="project-point-text">kurzer Text …</p>
-        </div>
-      </li>
-      <li>
-        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
-        <div>
-          <p class="project-point-title">Group work experience</p>
-          <p class="project-point-text">kurzer Text …</p>
-        </div>
-      </li>
-    </ul>
-    <div class="project-card-actions">
-      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
-      <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Github</a>
-    </div>
-  </article>
-  <!-- ===== Project 2 ===== -->
-  <article class="project-card" *ngIf="active===1" [class.active]="active===1">
     <header class="project-card-head">
       <h3 class="project-card-title">Myrddin's Quest</h3>
       <div class="project-card-meta">
@@ -68,7 +29,7 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">How I organised my work</p>
-          <p class="project-point-text">I worked independently, planning and implementing each feature 
+          <p class="project-point-text">I worked independently, planning and implementing each feature
             step by step to ensure a structured workflow.</p>
         </div>
       </li>
@@ -77,6 +38,47 @@
       <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Live Test</a>
       <a class="btn btn--ghost" href="https://github.com/Creative-Web-Dev2023/Myrddin-s-Quest" target="_blank"
         rel="noopener">Github</a>
+    </div>
+  </article>
+  <!-- ===== Project 2 (Da Bubble) ===== -->
+  <article class="project-card" *ngIf="active===1" [class.active]="active===1">
+    <header class="project-card-head">
+      <h3 class="project-card-title">Da Bubble <span class="badge">in progress</span></h3>
+      <div class="project-card-meta">
+        <span class="project-card-tech">Angular | TypeScript | JavaScript | Firebase| Scss</span>
+      </div>
+    </header>
+    <div class="project-card-shot-wrapper">
+      <img class="project-card-shot" src="/img/my-projects/da-bubble.png" alt="Screenshot Project 01" />
+      <div class="overlay">in progress</div>
+    </div>
+    <ul class="project-card-points">
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">About the project</p>
+          <p class="project-point-text">DA-Bubble is a real-time chat app built with Angular and Firebase.
+            It supports public channels, private messages, and secure authentication.</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">How I organised my work</p>
+          <p class="project-point-text">Note: This project is still in progress and will be updated soon.</p>
+        </div>
+      </li>
+      <li>
+        <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
+        <div>
+          <p class="project-point-title">Group work experience</p>
+          <p class="project-point-text">kurzer Text …</p>
+        </div>
+      </li>
+    </ul>
+    <div class="project-card-actions">
+      <button class="btn btn--primary" disabled>Live Test (coming soon)</button>
+      <button class="btn btn--ghost" disabled>Github (coming soon)</button>
     </div>
   </article>
   <!-- ===== Project 3 ===== -->
@@ -93,23 +95,23 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">About the project</p>
-            <p class="project-point-text">Kanban-style task manager built with Angular and Firebase.
-               Supports drag & drop, user assignment, categories, and custom authentication.</p>
+          <p class="project-point-text">Kanban-style task manager built with Angular and Firebase.
+            Supports drag & drop, user assignment, categories, and custom authentication.</p>
         </div>
       </li>
       <li>
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">How I organised my work</p>
-            <p class="project-point-text">Tasks were split using Kanban boards and regular meetings helped us
-               adapt quickly and stay organized.</p>
+          <p class="project-point-text">Tasks were split using Kanban boards and regular meetings helped us
+            adapt quickly and stay organized.</p>
         </div>
       </li>
       <li>
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">Group work experience</p>
-            <p class="project-point-text">Clear role assignment and open communication ensured a smooth workflow.</p>
+          <p class="project-point-text">Clear role assignment and open communication ensured a smooth workflow.</p>
         </div>
       </li>
     </ul>
@@ -133,7 +135,7 @@
         <img src="/img/my-projects/elipse.svg" class="project-point-icon" alt="" />
         <div>
           <p class="project-point-title">About the project</p>
-          <p class="project-point-text">Interactive Pokédex app that loads Pokémon data from a public API. 
+          <p class="project-point-text">Interactive Pokédex app that loads Pokémon data from a public API.
             Provides detailed information about Pokémon, including stats, abilities, and evolution stages.</p>
         </div>
       </li>
@@ -142,7 +144,7 @@
         <div>
           <p class="project-point-title">How I organised my work</p>
           <p class="project-point-text">Work was split into planning, development, and testing.
-             Agile methods ensured  flexibility, and continuous testing helped catch issues early.</p>
+            Agile methods ensured flexibility, and continuous testing helped catch issues early.</p>
         </div>
       </li>
 

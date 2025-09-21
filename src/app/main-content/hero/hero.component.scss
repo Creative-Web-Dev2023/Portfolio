@@ -16,66 +16,6 @@
     z-index: 2000;
   }
 
-  /* Logo-Block (fluid) */
-  &-logo-block {
-    position: absolute;
-    top: clamp(16px, 3vw, 32px);
-    left: clamp(16px, 3vw, 32px);
-    width: var(--logo-size);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(2px, 0.8vw, 6px);
-    color: var(--primary);
-    z-index: 10;
-  }
-
-  &-logo {
-    position: relative;
-    width: var(--logo-size);
-    height: calc(var(--logo-size) * 1.24);
-    top: clamp(16px, 3vw, 30px);
-
-    .logo-s {
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: 100%;
-      height: calc(var(--logo-size) * 0.66);
-      display: block;
-    }
-
-    .brace {
-      position: absolute;
-      top: calc(var(--logo-size) * 0.21);
-      width: calc(var(--logo-size) * 0.18);
-      height: calc(var(--logo-size) * 0.33);
-      pointer-events: none;
-
-      &--left {
-        left: calc(var(--logo-size) * 0.16);
-      }
-      &--right {
-        right: calc(var(--logo-size) * 0.17);
-      }
-    }
-  }
-
-  &-logo-name {
-    font-family: "Anta", system-ui, sans-serif;
-    font-weight: 400;
-    font-size: clamp(12px, 1.4vw, 16px);
-    line-height: 1.2;
-    color: var(--text);
-  }
-
-  &-logo-dev {
-    font-family: "Josefin Sans", system-ui, sans-serif;
-    font-weight: 300;
-    font-size: clamp(12px, 1.4vw, 16px);
-    line-height: 1.2;
-    color: var(--primary);
-  }
-
   /* Visual */
   &-visual {
     display: grid;
@@ -181,14 +121,6 @@
     max-width: 1214px;
     margin-inline: auto;
     position: relative;
-
-    --logo-size: clamp(64px, 6vw, 120px);
-
-    &-logo-block {
-      top: clamp(100px, 10vh, 160px);
-      left: 50%;
-      transform: translateX(-50%);
-    }
 
     &-visual {
       width: clamp(420px, 36vw, 480px);
